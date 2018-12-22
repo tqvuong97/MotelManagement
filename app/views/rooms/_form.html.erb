@@ -1,0 +1,51 @@
+<%= form_with(model: room, local: true) do |form| %>
+  <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%#= form.text_field :status %>
+    <%= form.select(:status, options_for_select([['Available','available'],['Hired','hired'],['Fixing','fixing']])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot %>
+    <%= form.number_field :slot %>
+  </div>
+
+
+    <div class="field">
+      <%= form.label :area_id %>
+      <%= form.select(:area_id, options_for_select(@areas)) %>
+    </div>
+
+
+    <%=link_to 'Add more areas', new_area_path %>
+
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

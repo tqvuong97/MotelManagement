@@ -1,0 +1,16 @@
+<h2><b>Welcome to the King Motel Management System</b></h2>
+
+<p>Hi ,  <%= @email %> !</p>
+<p>We have just received your request to create a new account .</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p><i>
+  This is an automated email, please do not reply.<br>
+  If this is not your request, please ignore this email</i></p>
+
+<h3>
+  If you have any problems, please contact Admin via email: quocvuong.tqv97@gmail.com
+</h3>

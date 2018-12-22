@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Devices Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Datebegin</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices_rooms.each do |devices_room| %>
+      <tr>
+        <td><%= devices_room.device.name %></td>
+        <td><%= devices_room.status %></td>
+        <td><%= devices_room.quantity %></td>
+        <td><%= devices_room.datebegin %></td>
+        <td><%= link_to 'Show',devices_room%></td>
+        <td><%= link_to 'Edit', edit_room_devices_room_path(@room,devices_room) %></td>
+        <td><%= link_to 'Destroy',[@room,devices_room] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--        room_devices_rooms_path(devices_room)-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Devices Room', new_room_devices_room_path %>

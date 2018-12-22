@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @devices_room.status %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @devices_room.quantity %>
+</p>
+
+<p>
+  <strong>Datebegin:</strong>
+  <%= @devices_room.datebegin %>
+</p>
+
+<%= link_to 'Edit', edit_room_devices_room_path(@devices_room.room_id) %> |
+<%= link_to 'Back', room_devices_rooms_path(@devices_room.room_id) %>
