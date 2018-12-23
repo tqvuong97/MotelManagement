@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datebegin</th>
+      <th>Dateend</th>
+      <th>Electbegin</th>
+      <th>Electend</th>
+      <th>Waterbegin</th>
+      <th>Waterend</th>
+      <th>Internet</th>
+      <th>Cleaner</th>
+      <th>Parking</th>
+      <th>Laundry</th>
+      <th>Option1</th>
+      <th>Option2</th>
+      <th>Option3</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services_rooms.each do |services_room| %>
+      <tr>
+        <td><%= services_room.datebegin %></td>
+        <td><%= services_room.dateend %></td>
+        <td><%= services_room.electbegin %></td>
+        <td><%= services_room.electend %></td>
+        <td><%= services_room.waterbegin %></td>
+        <td><%= services_room.waterend %></td>
+        <td><%= services_room.internet %></td>
+        <td><%= services_room.cleaner %></td>
+        <td><%= services_room.parking %></td>
+        <td><%= services_room.laundry %></td>
+        <td><%= services_room.option1 %></td>
+        <td><%= services_room.option2 %></td>
+        <td><%= services_room.option3 %></td>
+        <td><%= link_to 'Show', room_services_room_path(services_room.room_id,services_room.id) %></td>
+        <td><%= link_to 'Edit', edit_room_services_room_path(services_room.room_id,services_room.id) %></td>
+        <td><%= link_to 'Destroy',[@room,services_room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'List Bill',  room_services_room_billings_path(services_room.room_id,services_room.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Services Room', new_room_services_room_path %>

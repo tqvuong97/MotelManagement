@@ -12,13 +12,14 @@
         <%else %>
         <div class="inner">
                 <h2 class="Helvetica">HELLO <%= current_admin.email %></h2>
-                <hr>
-<!--                <%= link_to 'MY INFORMATION', edit_admin_registration_path %>  &nbsp; <%#= link_to 'ROOM', rooms_path %>-->
+                <hr> <%= link_to 'MY INFORMATION', edit_admin_registration_path %>
+<!--                 &nbsp; <%#= link_to 'ROOM', rooms_path %>-->
 
             </div>
             <%= link_to('Area', areas_path) %>
             <%= link_to('Room', rooms_path) %>
             <%= link_to('Device', devices_path) %>
+            <%= link_to('Service', services_path) %>
 
             <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>
         <%end %>

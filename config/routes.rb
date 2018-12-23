@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+  resources :billings
+  resources :services_rooms
+  resources :services
+  get "/newservices" ,to: "services#createservice"
   resources :guests
   resources :devices_rooms
 
   resources :devices
   resources :rooms do
     resources :devices_rooms
+  end
+  resources :rooms do
+    resources :services_rooms do
+      resources :billings
+    end
   end
   resources :rooms do
     resources :guests

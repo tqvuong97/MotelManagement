@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datebegin:</strong>
+  <%= @services_room.datebegin %>
+</p>
+
+<p>
+  <strong>Dateend:</strong>
+  <%= @services_room.dateend %>
+</p>
+
+<p>
+  <strong>Electbegin:</strong>
+  <%= @services_room.electbegin %>
+</p>
+
+<p>
+  <strong>Electend:</strong>
+  <%= @services_room.electend %>
+</p>
+
+<p>
+  <strong>Waterbegin:</strong>
+  <%= @services_room.waterbegin %>
+</p>
+
+<p>
+  <strong>Waterend:</strong>
+  <%= @services_room.waterend %>
+</p>
+
+<p>
+  <strong>Internet:</strong>
+  <%= @services_room.internet %>
+</p>
+
+<p>
+  <strong>Cleaner:</strong>
+  <%= @services_room.cleaner %>
+</p>
+
+<p>
+  <strong>Parking:</strong>
+  <%= @services_room.parking %>
+</p>
+
+<p>
+  <strong>Laundry:</strong>
+  <%= @services_room.laundry %>
+</p>
+
+<p>
+  <strong>Option1:</strong>
+  <%= @services_room.option1 %>
+</p>
+
+<p>
+  <strong>Option2:</strong>
+  <%= @services_room.option2 %>
+</p>
+
+<p>
+  <strong>Option3:</strong>
+  <%= @services_room.option3 %>
+</p>
+
+<%= link_to 'Edit', edit_room_services_room_path(@services_room.room_id) %> |
+<%= link_to 'Back', room_services_rooms_path(@services_room.room_id) %>

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datebegin: 2018-12-23
+  dateend: 2018-12-23
+  electbegin: 1
+  electend: 1
+  waterbegin: 1
+  waterend: 1
+  internet: 1
+  cleaner: 1
+  parking: 1
+  laundry: 1
+  option1: 1
+  option2: 1
+  option3: 1
+
+two:
+  datebegin: 2018-12-23
+  dateend: 2018-12-23
+  electbegin: 1
+  electend: 1
+  waterbegin: 1
+  waterend: 1
+  internet: 1
+  cleaner: 1
+  parking: 1
+  laundry: 1
+  option1: 1
+  option2: 1
+  option3: 1

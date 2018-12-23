@@ -1,0 +1,83 @@
+<%= form_with(model: services_room, local: true) do |form| %>
+  <% if services_room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(services_room.errors.count, "error") %> prohibited this services_room from being saved:</h2>
+
+      <ul>
+      <% services_room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :datebegin %>
+    <%= form.date_select :datebegin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateend %>
+    <%= form.date_select :dateend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :electbegin %>
+    <%= form.number_field :electbegin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :electend %>
+    <%= form.number_field :electend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :waterbegin %>
+    <%= form.number_field :waterbegin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :waterend %>
+    <%= form.number_field :waterend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internet %>
+    <%= form.number_field :internet %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cleaner %>
+    <%= form.number_field :cleaner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking %>
+    <%= form.number_field :parking %>
+  </div>
+
+  <div class="field">
+    <%= form.label :laundry %>
+    <%= form.number_field :laundry %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option1 %>
+    <%= form.number_field :option1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option2 %>
+    <%= form.number_field :option2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :option3 %>
+    <%= form.number_field :option3 %>
+  </div>
+  <%= form.hidden_field :room_id , value: params[:room_id] %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

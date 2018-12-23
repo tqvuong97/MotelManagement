@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Electric:</strong>
+  <%= @billing.electric %>
+</p>
+
+<p>
+  <strong>Water:</strong>
+  <%= @billing.water %>
+</p>
+
+<p>
+  <strong>Internet:</strong>
+  <%= @billing.internet %>
+</p>
+
+<p>
+  <strong>Cleaner:</strong>
+  <%= @billing.cleaner %>
+</p>
+
+<p>
+  <strong>Parking:</strong>
+  <%= @billing.parking %>
+</p>
+
+<p>
+  <strong>Laundry:</strong>
+  <%= @billing.laundry %>
+</p>
+
+<p>
+  <strong>Option1:</strong>
+  <%= @billing.option1 %>
+</p>
+
+<p>
+  <strong>Option2:</strong>
+  <%= @billing.option2 %>
+</p>
+
+<p>
+  <strong>Option3:</strong>
+  <%= @billing.option3 %>
+</p>
+
+<%= link_to 'Edit', edit_billing_path(@billing) %> |
+<%= link_to 'Back', billings_path %>

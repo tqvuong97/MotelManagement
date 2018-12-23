@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  electric: 1
+  water: 1
+  internet: 1
+  cleaner: 1
+  parking: 1
+  laundry: 1
+  option1: 1
+  option2: 1
+  option3: 1
+
+two:
+  electric: 1
+  water: 1
+  internet: 1
+  cleaner: 1
+  parking: 1
+  laundry: 1
+  option1: 1
+  option2: 1
+  option3: 1

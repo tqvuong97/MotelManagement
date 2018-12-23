@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_054717) do
+ActiveRecord::Schema.define(version: 2018_12_23_084808) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(version: 2018_12_22_054717) do
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
     t.index ["admin_id"], name: "index_areas_on_admin_id"
+  end
+
+  create_table "billings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "electric"
+    t.integer "water"
+    t.integer "internet"
+    t.integer "cleaner"
+    t.integer "parking"
+    t.integer "laundry"
+    t.integer "option1"
+    t.integer "option2"
+    t.integer "option3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "services_room_id"
+    t.index ["services_room_id"], name: "index_billings_on_services_room_id"
   end
 
   create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,10 +107,43 @@ ActiveRecord::Schema.define(version: 2018_12_22_054717) do
     t.index ["area_id"], name: "index_rooms_on_area_id"
   end
 
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "unit"
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.index ["admin_id"], name: "index_services_on_admin_id"
+  end
+
+  create_table "services_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "datebegin"
+    t.date "dateend"
+    t.integer "electbegin"
+    t.integer "electend"
+    t.integer "waterbegin"
+    t.integer "waterend"
+    t.integer "internet"
+    t.integer "cleaner"
+    t.integer "parking"
+    t.integer "laundry"
+    t.integer "option1"
+    t.integer "option2"
+    t.integer "option3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_services_rooms_on_room_id"
+  end
+
   add_foreign_key "areas", "admins"
+  add_foreign_key "billings", "services_rooms"
   add_foreign_key "devices_rooms", "devices"
   add_foreign_key "devices_rooms", "rooms"
   add_foreign_key "guests", "rooms"
   add_foreign_key "rooms", "admins"
   add_foreign_key "rooms", "areas"
+  add_foreign_key "services", "admins"
+  add_foreign_key "services_rooms", "rooms"
 end

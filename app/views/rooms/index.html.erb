@@ -9,7 +9,7 @@
       <th>Status</th>
       <th>Price</th>
       <th>Slot</th>
-      <th colspan="5"></th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -25,6 +25,7 @@
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to "List Devices", room_devices_rooms_path(room.id) %></td>
         <td><%= link_to "List Guests", room_guests_path(room.id) %></td>
+        <td><%= link_to "List Services used", room_services_rooms_path(room.id) %></td>
 
       </tr>
     <% end %>
