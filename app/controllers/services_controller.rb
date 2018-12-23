@@ -34,12 +34,7 @@ class ServicesController < ApplicationController
     service_option3 = Service.create(name: "Option 3 ",unit:"none" ,cost: 0 ,admin_id: ad )
     respond_to do |format|
       format.html { redirect_to services_path, notice: 'Service was successfully created.' }
-
-
     end
-
-
-
   end
 
   # POST /services

@@ -1,6 +1,6 @@
 class BillingsController < ApplicationController
   before_action :set_billing, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /billings
   # GET /billings.json
   def index
@@ -30,7 +30,7 @@ class BillingsController < ApplicationController
 
     @billing = Billing.new(billing_params)
     @services_room = ServicesRoom.find(@billing.services_room_id)
-    @billing.electric = (@services_room.electend - @services_room.electbegin)*Service.find(1).cost
+    @billing.electric = (@services_room.electend - @services_room.electbegin)*Service.find_by(admin_id: current_admin.id,name: "Dien").cost
 
     respond_to do |format|
       if @billing.save

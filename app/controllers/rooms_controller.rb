@@ -5,7 +5,6 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.where("admin_id = ?",current_admin.id)
-
   end
 
   # GET /rooms/1

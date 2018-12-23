@@ -7,5 +7,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable
   has_many :areas
   has_many :rooms
+  has_many :services
 
 end

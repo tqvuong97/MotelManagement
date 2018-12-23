@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  has_many :billings
+  belongs_to :admin
 end
