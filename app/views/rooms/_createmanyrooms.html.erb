@@ -1,0 +1,42 @@
+<h1>New Room</h1>
+
+<%= form_for(@room,url: newrooms_path, html: {method: "get"}) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%#= form.text_field :status %>
+    <%= form.select(:status, options_for_select([['Available','available'],['Hired','hired'],['Fixing','fixing']])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slot %>
+    <%= form.number_field :slot %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :area_id %>
+    <%= form.select(:area_id, options_for_select(@areas)) %>
+    <%#=form.select(:area_id, options_from_collection_for_select(Area.where(admin_id: current_admin.id), :id, :name), include_blank: "Select Area") %>
+  </div>
+  <div class="field">
+    <%= form.label "Quantity" %>
+    <%= form.number_field :quantiy %>
+  </div>
+  <%=link_to 'Add more areas', new_area_path %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', rooms_path %>

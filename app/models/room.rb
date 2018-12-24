@@ -5,5 +5,5 @@ class Room < ApplicationRecord
   has_many :devices_rooms
   has_many :guests
   has_many :services_rooms
-  belongs_to :billing
+
 end

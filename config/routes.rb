@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :services_rooms
   resources :services
   get "/newservices" ,to: "services#createservice"
+  get "/newrooms" ,to: "rooms#createmanyrooms"
   resources :guests
   resources :devices_rooms
 

@@ -4,8 +4,16 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.where("admin_id = ?",current_admin.id)
+  # @rooms = Room.searchroom(params[:r])
+  # @rooms = Room.where("admin_id = ?",current_admin.id)
+    @areas = Area.where(admin_id: current_admin.id).map { |a| [a.name, a.id] }
+    if params[:r]
+      @rooms = Room.where("admin_id = ? and name LIKE ?",current_admin.id,"%#{params[:r]}%").order('created_at DESC')
+    else
+      @rooms = Room.where("admin_id = ?",current_admin.id).order('created_at DESC')
+    end
   end
+
 
   # GET /rooms/1
   # GET /rooms/1.json
@@ -15,12 +23,25 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
-    @areas = Area.where("admin_id = ?",current_admin.id).map { |a| [a.name, a.id] }
+    @areas = Area.where(admin_id: current_admin.id)
+    @areas = @areas.map { |a| [a.name, a.id] }
+
   end
+  # def createmanyrooms
+  #   for i in 0..params[:quantity].to_i
+  #     @r = Room.new(room_params)
+  #     @r.name = "Room " + @r+" "+i
+  #     @r.admin_id = current_admin.id.to_i
+  #     @r.save
+  #   end
+  #   respond_to do |format|
+  #     format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
+  #   end
+  # end
 
   # GET /rooms/1/edit
   def edit
-    @areas = Area.where("admin_id = ?",current_admin.id).map { |a| [a.name, a.id] }
+     @areas = Area.where("admin_id = ?",current_admin.id).map { |a| [a.name, a.id] }
   end
 
   # POST /rooms
@@ -72,6 +93,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :status, :price, :slot, :area_id,:admin_id)
+      params.require(:room).permit(:name, :status, :price, :slot, :area_id,:admin_id,:r,:quantity)
     end
 end
