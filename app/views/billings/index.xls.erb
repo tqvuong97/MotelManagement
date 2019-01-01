@@ -1,0 +1,48 @@
+<h1>Billings</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Electric</th>
+    <th>Water</th>
+    <th>Internet</th>
+    <th>Cleaner</th>
+    <th>Parking</th>
+    <th>Laundry</th>
+    <th>Option1</th>
+    <th>Option2</th>
+    <th>Option3</th>
+    <th>    </th>
+    <th>Total</th>
+    <th>Date create</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @billings.each do |billing| %>
+    <tr>
+      <td><%= billing.services_room.room.name %></td>
+      <td><%= billing.electric %></td>
+      <td><%= billing.water %></td>
+      <td><%= billing.internet %></td>
+      <td><%= billing.cleaner %></td>
+      <td><%= billing.parking %></td>
+      <td><%= billing.laundry %></td>
+      <td><%= billing.option1 %></td>
+      <td><%= billing.option2 %></td>
+      <td><%= billing.option3 %></td>
+      <td></td>
+      <td><%= billing.total %></td>
+      <td><%= billing.created_at %></td>
+<!--      <td><%#= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id) %></td>-->
+      <!--        <td><%#= link_to 'Edit', edit_billing_path(billing) %></td>-->
+<!--      <td><%#= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+

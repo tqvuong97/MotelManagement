@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :users
   resources :billings
   resources :services_rooms
   resources :services
   get "/newservices" ,to: "services#createservice"
   get "/newrooms" ,to: "rooms#createmanyrooms"
+  get "/export" ,to: "billings#exp"
+  get "/guest",to: "static_pages#guestinfo"
   resources :guests
   resources :devices_rooms
 

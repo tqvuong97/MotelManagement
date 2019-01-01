@@ -56,11 +56,15 @@ class AreasController < ApplicationController
   # DELETE /areas/1
   # DELETE /areas/1.json
   def destroy
-    @area.destroy
     respond_to do |format|
-      format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
-      format.json { head :no_content }
+      if @area.destroy
+          format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
+          format.json { head :no_content }
+      else
+        format.html { redirect_to areas_url, notice: 'Area cannot destroy - Foreignkey.' }
+      end
     end
+
   end
 
   private

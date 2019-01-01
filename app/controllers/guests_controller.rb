@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /guests
   # GET /guests.json
   def index
@@ -10,6 +10,7 @@ class GuestsController < ApplicationController
   # GET /guests/1
   # GET /guests/1.json
   def show
+    # SendBillingMailer.sample_email(@guest).deliver_now
   end
 
   # GET /guests/new

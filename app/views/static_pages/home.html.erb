@@ -1,13 +1,16 @@
 
-    
+    <%#if current_admin.expired_at < Time.now %>
+      <%#= note %>
+      <%#end %>
+
     <header id="first">
         <div class="header-content">
-<!--          <p id="notice"><%#= notice %></p>-->
+          <p id="notice"><%= @notice1 %></p>
         <%if !admin_signed_in? %>
             <div class="inner">
                 <h2 class="Helvetica">WELCOME TO MANAGEMENT MOTEL SYSTEM</h2>
                 <hr>
-                <a href="#video-background" id="guest" data-toggle="collapse" class="btn btn-primary btn-xl"> GUEST </a> &nbsp; <a href="/admins/sign_in" class="btn btn-primary btn-xl"> MANAGER </a>
+                <a href="/guest" id="guest" class="btn btn-primary btn-xl"> GUEST </a> &nbsp; <a href="/admins/sign_in" class="btn btn-primary btn-xl"> MANAGER </a>
             </div>
         <%else %>
         <div class="inner">
@@ -16,6 +19,10 @@
 <!--                 &nbsp; <%#= link_to 'ROOM', rooms_path %>-->
 
             </div>
+            <%if current_admin.role == 'admin' %>
+              <%= link_to('User', users_path) %>
+            <%end %>
+
             <%= link_to('Area', areas_path) %>
             <%= link_to('Room', rooms_path) %>
             <%= link_to('Device', devices_path) %>
@@ -192,8 +199,8 @@
 <!--        </div>-->
 <!--    </div>-->
     <!--scripts loaded here -->
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/jquery.easing.min.js"></script>
-    <script src="./js/wow.js"></script>
-    <script src="./js/scripts.js"></script>
+<!--    <script src="./js/jquery.min.js"></script>-->
+<!--    <script src="./js/bootstrap.min.js"></script>-->
+<!--    <script src="./js/jquery.easing.min.js"></script>-->
+<!--    <script src="./js/wow.js"></script>-->
+<!--    <script src="./js/scripts.js"></script>-->

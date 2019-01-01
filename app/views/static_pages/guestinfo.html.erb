@@ -1,0 +1,171 @@
+<body>
+
+<div class="container">
+  <h2>King's Customers</h2>
+  <h3>This is the page for customers who rent a room .</h3>
+   <h3><i> If you are a guest, please enter the email that you registered with the manager to see the details </i></h3>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Enter email</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please enter your email</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_tag(guest_path, method: :get) do %>
+            <%= text_field_tag :r, params[:r] %>
+            <%= submit_tag 'Go', name: nil %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<%unless @guests.blank? %>
+
+  <h1>Guests</h1>
+
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth</th>
+      <th>Address</th>
+      <th>Identitycard</th>
+      <th>Phonenumber</th>
+      <th>Image</th>
+      <th>Job</th>
+      <th>Notice</th>
+      <th>Room</th>
+      <th>Email</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @guests.each do |guest| %>
+      <tr>
+        <td><%= guest.name %></td>
+        <td><%= guest.birth %></td>
+        <td><%= guest.address %></td>
+        <td><%= guest.identitycard %></td>
+        <td><%= guest.phonenumber %></td>
+        <td><%= guest.image %></td>
+        <td><%= guest.job %></td>
+        <td><%= guest.notice %></td>
+        <td><%=  guest.room.name %></td>
+        <td><%=  guest.email %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<%= @b1 %><br>
+    <%= @b2 %><br>
+    <%= @b3 %>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Service</th>
+        <th>Used</th>
+        <!--    <th>Unit price</th>-->
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @b3.each do |b| %>
+      <%# b1.billings do |b| %>
+        <tr>
+          <td>1</td>
+          <td>Electricity</td>
+          <td><%= b.services_room.electbegin %>   <%= b.services_room.electend %> => <%= b.services_room.electend - b.services_room.electbegin %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>-->
+          <td><%= b.electric %></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Water</td>
+          <td><%= b.services_room.waterbegin %>   <%= b.services_room.waterend %> => <%= b.services_room.waterend - b.services_room.waterbegin %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost %></td>-->
+          <td><%= b.water %></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Internet</td>
+          <td><%= b.services_room.internet %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Internet").cost %></td>-->
+          <td><%= b.internet %></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Cleaner</td>
+          <td><%= b.services_room.cleaner %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Ve sinh").cost %></td>-->
+          <td><%= b.cleaner %></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Parking</td>
+          <td><%= b.services_room.parking %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Gui xe").cost %></td>-->
+          <td><%= b.parking %></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Laundry</td>
+          <td><%= b.services_room.laundry %> </td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Giat ui").cost %></td>-->
+          <td><%= b.laundry %></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Option 1</td>
+          <td><%= b.services_room.option1 %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 1").cost %></td>-->
+          <td><%= b.option1 %></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Option 2</td>
+          <td><%= b.services_room.option2 %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 2").cost %></td>-->
+          <td><%= b.option2 %></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Option 3</td>
+          <td><%= b.services_room.option3 %></td>
+          <!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 3").cost %></td>-->
+          <td><%= b.option3 %></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Renting fee</td>
+          <td><%= 1 %></td>
+          <!--    <td><%#= b.services_room.room.price %></td>-->
+          <td><%= b.rentingfee %></td>
+        </tr>
+        <tr>
+          <td colspan="3">TOTAL</td>
+          <!--      <td><%#= b.services_room.electbegin %>   <%#= b.services_room.electend %> => <%#= b.services_room.electend - b.services_room.electbegin %></td>-->
+          <!--      <td><%#= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>-->
+          <td><b><center><%= b.total %></center></b></td>
+        </tr>
+
+      <%end %>
+      </tbody>
+    </table>
+    
+<%end %>
+</div>
+
+</body>

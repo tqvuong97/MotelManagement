@@ -17,6 +17,10 @@ class ServicesRoomsController < ApplicationController
   def new
     @services_room = ServicesRoom.new
     @room = Room.find(params[:room_id])
+    @services_room.option1 = 0
+    @services_room.option2 = 0
+    @services_room.option3 = 0
+
   end
 
   # GET /services_rooms/1/edit

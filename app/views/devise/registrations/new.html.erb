@@ -20,6 +20,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <div class="field">
+<!--    <%#= f.label :password_confirmation %><br />-->
+    <%= f.hidden_field :expired_at , value: Time.now + 6.months %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

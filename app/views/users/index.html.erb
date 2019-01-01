@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%#= link_to new_user_path, class: 'btn btn-primary' do %>
+<!--    <span class="glyphicon glyphicon-plus"></span>-->
+<!--    New User-->
+  <%# end %>
+  <h1>Listing users</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th>Expire at</th>
+        <th>Role</th>
+        <th colspan="2"></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <%@users.each do |user| %>
+    <tr>
+      <td><%= user.id%></td>
+      <td><%= user.email%></td>
+      <td><%= user.created_at%></td>
+      <td><%= user.updated_at%></td>
+      <td><%= user.expired_at%></td>
+      <td><%= user.role%></td>
+
+<!--            <td><%#= link_to 'Show', admin_path(user)%></td>-->
+        <td><%= link_to 'Edit', edit_admin_registration_path(user) %></td>
+        <td><%= link_to 'Destroy', admin_registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
