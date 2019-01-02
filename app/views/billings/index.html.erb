@@ -26,17 +26,17 @@
     <% @billings.each do |billing| %>
       <tr>
         <td><%= billing.services_room.room.name %></td>
-        <td><%= billing.electric %></td>
-        <td><%= billing.water %></td>
-        <td><%= billing.internet %></td>
-        <td><%= billing.cleaner %></td>
-        <td><%= billing.parking %></td>
-        <td><%= billing.laundry %></td>
-        <td><%= billing.option1 %></td>
-        <td><%= billing.option2 %></td>
-        <td><%= billing.option3 %></td>
+        <td><%= number_with_delimiter(billing.electric) %></td>
+        <td><%= number_with_delimiter(billing.water) %></td>
+        <td><%= number_with_delimiter(billing.internet )%></td>
+        <td><%= number_with_delimiter(billing.cleaner) %></td>
+        <td><%= number_with_delimiter(billing.parking) %></td>
+        <td><%= number_with_delimiter(billing.laundry) %></td>
+        <td><%= number_with_delimiter(billing.option1) %></td>
+        <td><%= number_with_delimiter(billing.option2 )%></td>
+        <td><%= number_with_delimiter(billing.option3 )%></td>
         <td></td>
-        <td><%= billing.total %></td>
+        <td><%= number_with_delimiter(billing.total) %></td>
         <td><%= billing.created_at %></td>
         <td><%= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>
 <!--        <td><%#= link_to 'Edit', edit_billing_path(billing) %></td>-->

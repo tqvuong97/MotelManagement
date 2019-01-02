@@ -51,7 +51,6 @@
  </tbody>
 </table>
 
-
 <table border="1">
   <thead>
   <tr>
@@ -68,7 +67,7 @@
       <td>Electricity</td>
       <td><%= @billing.services_room.electbegin %>   <%= @billing.services_room.electend %> => <%= @billing.services_room.electend - @billing.services_room.electbegin %></td>
       <td><%= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>
-      <td><%= @billing.electric %></td>
+      <td><%= number_with_delimiter(@billing.electric)%></td>
     </tr>
     <tr>
       <td>2</td>

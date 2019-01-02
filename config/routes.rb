@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/newservices" ,to: "services#createservice"
   get "/newrooms" ,to: "rooms#createmanyrooms"
   get "/export" ,to: "billings#exp"
-  get "/guest",to: "static_pages#guestinfo"
+  get "/guestinfo",to: "static_pages#guestinfo"
   resources :guests
   resources :devices_rooms
 
