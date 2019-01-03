@@ -1,4 +1,9 @@
 <body>
+<style>
+  td{
+    font-size: 20px;
+  }
+</style>
 
 <div class="container">
   <h2>King's Customers</h2>
@@ -32,128 +37,153 @@
   </div>
 <%unless @guests.blank? %>
 
-  <h1>Guests</h1>
+    <div class="container center-block">
+      <div class="row">
+        <div class="col-md-offset-1"></div>
+          <div class="col-md-9">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Birth</th>
+                <th>Address</th>
+                <th>Identitycard</th>
+                <th>Phonenumber</th>
+                <th>Image</th>
+                <th>Job</th>
+                <th>Notice</th>
+                <th>Room</th>
+                <th>Email</th>
 
-  <table border="1">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Birth</th>
-      <th>Address</th>
-      <th>Identitycard</th>
-      <th>Phonenumber</th>
-      <th>Image</th>
-      <th>Job</th>
-      <th>Notice</th>
-      <th>Room</th>
-      <th>Email</th>
+              </tr>
+              </thead>
 
-    </tr>
-    </thead>
+              <tbody>
+              <% @guests.each do |guest| %>
+                <tr>
+                  <td><%= guest.name %></td>
+                  <td><%= guest.birth %></td>
+                  <td><%= guest.address %></td>
+                  <td><%= guest.identitycard %></td>
+                  <td><%= guest.phonenumber %></td>
+                  <td><%= guest.image %></td>
+                  <td><%= guest.job %></td>
+                  <td><%= guest.notice %></td>
+                  <td><%=  guest.room.name %></td>
+                  <td><%=  guest.email %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        <div class="col-md-offset-2"></div>
+      </div>
+    </div>
+    <br><br>
 
-    <tbody>
-    <% @guests.each do |guest| %>
-      <tr>
-        <td><%= guest.name %></td>
-        <td><%= guest.birth %></td>
-        <td><%= guest.address %></td>
-        <td><%= guest.identitycard %></td>
-        <td><%= guest.phonenumber %></td>
-        <td><%= guest.image %></td>
-        <td><%= guest.job %></td>
-        <td><%= guest.notice %></td>
-        <td><%=  guest.room.name %></td>
-        <td><%=  guest.email %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<!--<%#= @r %><br>-->
-<!--    <%#= @sr.id %><br>-->
-    <%#= @b3 %>
-    <table border="1">
-      <thead>
-      <tr>
-        <th>No</th>
-        <th>Service</th>
-        <th>Used</th>
-        <th>Total</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @sr.each do |srr| %>
+
+
+    <div class="container">
+      <div class="row">
+
+    <% @sr.each do |srr| %>
       <% @bills = Billing.where("services_room_id = ?",srr.id) %>
-      <% @bills.each do |b| %>
+
+          <% @bills.each do |b| %>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#e<%=b.id %>">
+                  <%= b.services_room.datebegin %> <i style="font-size:24px" class="fa">&#xf18e;</i> <%=b.services_room.dateend%>
+                </button>
+
+                <table id = "e<%=b.id %>" class="collapse table table-hover">
+        <thead>
         <tr>
-          <td>1</td>
-          <td>Electricity</td>
-          <td><%= b.services_room.electbegin %>   <%= b.services_room.electend %> => <%= b.services_room.electend - b.services_room.electbegin %></td>
-          <td><%= b.electric %></td>
+          <th>No</th>
+          <th>Service</th>
+          <th>Used</th>
+          <th>Total</th>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Water</td>
-          <td><%= b.services_room.waterbegin %>   <%= b.services_room.waterend %> => <%= b.services_room.waterend - b.services_room.waterbegin %></td>
-          <td><%= b.water %></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Internet</td>
-          <td><%= b.services_room.internet %></td>
-          <td><%= b.internet %></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Cleaner</td>
-          <td><%= b.services_room.cleaner %></td>
-          <td><%= b.cleaner %></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Parking</td>
-          <td><%= b.services_room.parking %></td>
-          <td><%= b.parking %></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Laundry</td>
-          <td><%= b.services_room.laundry %> </td>
-          <td><%= b.laundry %></td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Option 1</td>
-          <td><%= b.services_room.option1 %></td>
-          <td><%= b.option1 %></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Option 2</td>
-          <td><%= b.services_room.option2 %></td>
-          <td><%= b.option2 %></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Option 3</td>
-          <td><%= b.services_room.option3 %></td>
-          <td><%= b.option3 %></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Renting fee</td>
-          <td><%= 1 %></td>
-          <td><%= b.rentingfee %></td>
-        </tr>
-        <tr>
-          <td colspan="3">TOTAL</td>
-          <td><b><center><%= b.total %></center></b></td>
-        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Electricity</td>
+            <td><%= b.services_room.electbegin %>   <%= b.services_room.electend %> 	<span class="glyphicon">&#xe092;</span> <%= b.services_room.electend - b.services_room.electbegin %></td>
+            <td><%= b.electric %></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Water</td>
+            <td><%= b.services_room.waterbegin %>   <%= b.services_room.waterend %> 	<span class="glyphicon">&#xe092;</span> <%= b.services_room.waterend - b.services_room.waterbegin %></td>
+            <td><%= b.water %></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Internet</td>
+            <td><%= b.services_room.internet %></td>
+            <td><%= b.internet %></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Cleaner</td>
+            <td><%= b.services_room.cleaner %></td>
+            <td><%= b.cleaner %></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Parking</td>
+            <td><%= b.services_room.parking %></td>
+            <td><%= b.parking %></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Laundry</td>
+            <td><%= b.services_room.laundry %> </td>
+            <td><%= b.laundry %></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Option 1</td>
+            <td><%= b.services_room.option1 %></td>
+            <td><%= b.option1 %></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Option 2</td>
+            <td><%= b.services_room.option2 %></td>
+            <td><%= b.option2 %></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Option 3</td>
+            <td><%= b.services_room.option3 %></td>
+            <td><%= b.option3 %></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Renting fee</td>
+            <td><%= 1 %></td>
+            <td><%= b.rentingfee %></td>
+          </tr>
+          <tr>
+            <td colspan="3">TOTAL</td>
+            <td><b><center><%= b.total %></center></b></td>
+          </tr>
+        </tbody>
+      </table>
+                  <br><br>
+              </div>
+          <%end %>
       <%end %>
-      <%end %>
-      </tbody>
-    </table>
-    
-<%end %>
+    <%end %>
+
+</div>
+  </div>
+
+
+
+
+
 </div>
 
 </body>

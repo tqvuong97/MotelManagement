@@ -1,33 +1,41 @@
-<%= form_with(model: device, local: true) do |form| %>
-  <% if device.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(device.errors.count, "error") %> prohibited this device from being saved:</h2>
+<div class="container center-block" >
+  <div class="row">
+    <div class="col-md-offset-4 "></div>
+    <div class="col-md-4 ">
+      <%= form_with(model: device, local: true) do |form| %>
+        <% if device.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(device.errors.count, "error") %> prohibited this device from being saved:</h2>
 
-      <ul>
-      <% device.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+            <% device.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name ,class: "form-control"%>
+        </div>
+
+        <div class="field">
+          <%= form.label :branch %>
+          <%= form.text_field :branch ,class: "form-control"%>
+        </div>
+
+
+        <div class="field">
+          <%= form.label :price %>
+          <%= form.number_field :price ,class: "form-control"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit class: "btn btn-primary"%>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
+</div>
+</div>
 
-  <div class="field">
-    <%= form.label :branch %>
-    <%= form.text_field :branch %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

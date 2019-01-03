@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_action :check_admin
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
   # GET /users
   # GET /users.json
   def index
+    check_admin
     @users = Admin.all
   end
 
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    @admin.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
@@ -67,6 +69,10 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+  def set_admin
+    @admin = Admin.find(params[:id])
+  end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

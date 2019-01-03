@@ -27,11 +27,11 @@ class BillingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to room_services_room_billing_path(@billing.services_room.room.id,@billing.services_room_id) ,notice: 'Billing was successfully exported.'}
       format.json { render :show, status: :created, location: @billing }
-      format.xls #{send_data @billing.to_csv(col_sep: "\t")}
+      format.xls
     end
     @t = @billing.services_room.room.guests
     @t.each do |t|
-      # SendBillingMailer.sample_email(t,@billing).deliver_now
+      SendBillingMailer.sample_email(t,@billing).deliver_now
     end
 
   end
@@ -68,7 +68,7 @@ class BillingsController < ApplicationController
     @billing.option2 = (@services_room.option2)*Service.find_by(admin_id: current_admin.id,name: "Option 2").cost
     @billing.option3 = (@services_room.option3)*Service.find_by(admin_id: current_admin.id,name: "Option 3").cost
     @billing.rentingfee = @services_room.room.price
-    @billing.total = @billing.electric +  @billing.water +  @billing.internet +  @billing.cleaner + @billing.parking + @billing.laundry + @billing.option1 + @billing.option2 + @billing.option3 + @billing.rentingfee
+    @billing.total = @billing.electric +  @billing.water +  @billing.internet +  @billing.cleaner + @billing.parking + @billing.laundry + @billing.option1 + @billing.option2 + @billing.option3 + @billing.rentingfee - @billing.bominus
     respond_to do |format|
       if @billing.save
         format.html { redirect_to room_services_room_billings_path(@billing.services_room.room.id,@billing.services_room_id), notice: 'Billing was successfully created.' }
@@ -112,6 +112,6 @@ class BillingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def billing_params
-      params.require(:billing).permit(:electric, :water, :internet, :cleaner, :parking, :laundry, :option1, :option2, :option3,:services_room_id,:total,:rentingfee)
+      params.require(:billing).permit(:electric, :water, :internet, :cleaner, :parking, :laundry, :option1, :option2, :option3,:services_room_id,:total,:rentingfee,:bominus,:note)
     end
 end

@@ -1,8 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Services</h1>
+<style>
+  td{
+    font-size: 20px;
+  }
+</style>
+<h2>Services</h2>
 <%unless @services.blank? %>
-<table>
+  <div class="container center-block">
+  <div class="row">
+  <div class="col-md-offset-3"></div>
+  <div class="col-md-6">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -18,8 +25,8 @@
         <td><%= service.name %></td>
         <td><%= service.unit %></td>
         <td><%= service.cost %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
+<!--        <td><%#= link_to 'Show', service %></td>-->
+        <td><%= link_to 'Edit', edit_service_path(service) ,class: "btn btn-success" %></td>
 <!--        <td><%#= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
@@ -28,7 +35,9 @@
 </table>
     <%else %>
       <br>
-      gdgdgdg
-      <%= link_to 'New',newservices_path %>
+      <%= link_to 'New',newservices_path ,class: "btn btn-primary btn-lg" %>
     <%end %>
-<%#= link_to 'New Service', new_service_path %>
+</div>
+<div class="col-md-offset-3"></div>
+</div>
+</div>

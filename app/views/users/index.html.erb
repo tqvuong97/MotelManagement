@@ -32,8 +32,8 @@
       <td><%= user.role%></td>
 
 <!--            <td><%#= link_to 'Show', admin_path(user)%></td>-->
-        <td><%= link_to 'Edit', edit_admin_registration_path(user) %></td>
-        <td><%= link_to 'Destroy', admin_registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_registration_path(user),class: "btn btn-success" %></td>
+<!--        <td><%#= link_to 'Destroy', admin_registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     </tr>
     <% end %>
     </tbody>

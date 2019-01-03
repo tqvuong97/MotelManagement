@@ -16,26 +16,15 @@ class StaticPagesController < ApplicationController
     def guestinfo
       if params[:r]
         @guests = Guest.where("email = ?",params[:r])
-
         @guests.each do |g1|
-
           @sr = ServicesRoom.where("room_id = ?",g1.room.id)
-          # @sr = @sr.id
-        #   @b2 = @b1.services_rooms.each do |g2|
-        #     @b3 = g2.billings.each do |g3|
-        #       @bills = g3
-        #     end
-        #
-          end
-
-
+        end
       else
         @guests = []
       end
     end
 
   private
-
   def valid_page?
     File.exist?(Pathname.new(Rails.root + "app/views/static_pages/#{params[:page]}.html.erb"))
   end

@@ -17,6 +17,9 @@ class ServicesRoomsController < ApplicationController
   def new
     @services_room = ServicesRoom.new
     @room = Room.find(params[:room_id])
+    @sr = ServicesRoom.joins("INNER JOIN rooms ON rooms.id = services_rooms.room_id").where("room_id = ?",params[:room_id].to_i).last
+    @services_room.electbegin = @sr.electend
+    @services_room.waterbegin = @sr.waterend
     @services_room.option1 = 0
     @services_room.option2 = 0
     @services_room.option3 = 0

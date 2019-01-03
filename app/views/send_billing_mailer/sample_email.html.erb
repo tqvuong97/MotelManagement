@@ -4,6 +4,7 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
+<h3>BILL</h3>
 <table>
   <tbody>
   <tr><%= @billing.services_room.room.name %></tr>
@@ -21,7 +22,6 @@
     <th>No</th>
     <th>Service</th>
     <th>Used</th>
-<!--    <th>Unit price</th>-->
     <th>Total</th>
   </tr>
   </thead>
@@ -30,80 +30,75 @@
     <td>1</td>
     <td>Electricity</td>
     <td><%= @billing.services_room.electbegin %>   <%= @billing.services_room.electend %> => <%= @billing.services_room.electend - @billing.services_room.electbegin %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>-->
     <td><%= @billing.electric %></td>
   </tr>
   <tr>
     <td>2</td>
     <td>Water</td>
     <td><%= @billing.services_room.waterbegin %>   <%= @billing.services_room.waterend %> => <%= @billing.services_room.waterend - @billing.services_room.waterbegin %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost %></td>-->
     <td><%= @billing.water %></td>
   </tr>
   <tr>
     <td>3</td>
     <td>Internet</td>
     <td><%= @billing.services_room.internet %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Internet").cost %></td>-->
     <td><%= @billing.internet %></td>
   </tr>
   <tr>
     <td>4</td>
     <td>Cleaner</td>
     <td><%= @billing.services_room.cleaner %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Ve sinh").cost %></td>-->
     <td><%= @billing.cleaner %></td>
   </tr>
   <tr>
     <td>5</td>
     <td>Parking</td>
     <td><%= @billing.services_room.parking %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Gui xe").cost %></td>-->
     <td><%= @billing.parking %></td>
   </tr>
   <tr>
     <td>6</td>
     <td>Laundry</td>
     <td><%= @billing.services_room.laundry %> </td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Giat ui").cost %></td>-->
     <td><%= @billing.laundry %></td>
   </tr>
   <tr>
     <td>7</td>
     <td>Option 1</td>
     <td><%= @billing.services_room.option1 %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 1").cost %></td>-->
     <td><%= @billing.option1 %></td>
   </tr>
   <tr>
     <td>8</td>
     <td>Option 2</td>
     <td><%= @billing.services_room.option2 %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 2").cost %></td>-->
     <td><%= @billing.option2 %></td>
   </tr>
   <tr>
     <td>9</td>
     <td>Option 3</td>
     <td><%= @billing.services_room.option3 %></td>
-<!--    <td><%#= Service.find_by(admin_id: current_admin.id,name: "Option 3").cost %></td>-->
     <td><%= @billing.option3 %></td>
   </tr>
   <tr>
     <td>10</td>
     <td>Renting fee</td>
     <td><%= 1 %></td>
-<!--    <td><%#= @billing.services_room.room.price %></td>-->
     <td><%= @billing.rentingfee %></td>
   </tr>
   <tr>
+    <td>11</td>
+    <td colspan="2">Bonus/Minus</td>
+    <td><%= @billing.bominus %></td>
+  </tr>
+  <tr>
     <td colspan="3">TOTAL</td>
-    <!--      <td><%#= @billing.services_room.electbegin %>   <%#= @billing.services_room.electend %> => <%#= @billing.services_room.electend - @billing.services_room.electbegin %></td>-->
-    <!--      <td><%#= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>-->
-    <td><b><center><%= @billing.total %></center></b></td>
+    <td><b><%= @billing.total %></b></td>
   </tr>
   </tbody>
 </table>
+<p><%= @billing.note %></p>
+<p><i>Please make payment no later than 5 days after receiving the notice !</i></p>
 <br>
 </body>
 </html>

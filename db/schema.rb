@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_085616) do
+ActiveRecord::Schema.define(version: 2019_01_03_164200) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2019_01_01_085616) do
     t.bigint "services_room_id"
     t.integer "total"
     t.integer "rentingfee"
+    t.integer "bominus"
+    t.text "note"
     t.index ["services_room_id"], name: "index_billings_on_services_room_id"
   end
 
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_085616) do
     t.datetime "updated_at", null: false
     t.bigint "area_id"
     t.bigint "admin_id"
+    t.integer "deposit"
     t.index ["admin_id"], name: "index_rooms_on_admin_id"
     t.index ["area_id"], name: "index_rooms_on_area_id"
   end

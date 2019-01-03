@@ -1,53 +1,10 @@
-<!--<h1>Billing</h1>-->
-
-<!--<table border="1">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>Name</th>-->
-<!--    <th>Electric</th>-->
-<!--    <th>Water</th>-->
-<!--    <th>Internet</th>-->
-<!--    <th>Cleaner</th>-->
-<!--    <th>Parking</th>-->
-<!--    <th>Laundry</th>-->
-<!--    <th>Option1</th>-->
-<!--    <th>Option2</th>-->
-<!--    <th>Option3</th>-->
-<!--    <th>    </th>-->
-<!--    <th>Total</th>-->
-<!--    <th>Date create</th>-->
-<!--    <th colspan="2"></th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-
-<!--  <tbody>-->
-
-<!--    <tr>-->
-<!--      <td><%#= @billing.services_room.room.name %></td>-->
-<!--      <td><%#= @billing.electric %></td>-->
-<!--      <td><%#= @billing.water %></td>-->
-<!--      <td><%#= @billing.internet %></td>-->
-<!--      <td><%#= @billing.cleaner %></td>-->
-<!--      <td><%#= @billing.parking %></td>-->
-<!--      <td><%#= @billing.laundry %></td>-->
-<!--      <td><%#= @billing.option1 %></td>-->
-<!--      <td><%#= @billing.option2 %></td>-->
-<!--      <td><%#= @billing.option3 %></td>-->
-<!--      <td></td>-->
-<!--      <td><%#= @billing.total %></td>-->
-<!--      <td><%#= @billing.created_at %></td>-->
-<!--    </tr>-->
-
-<!--  </tbody>-->
-<!--</table>-->
-
+<h3>BILL</h3>
 <table>
  <tbody>
    <tr><%= @billing.services_room.room.name %></tr>
    <tr>From : <%= @billing.services_room.datebegin %></tr>
    <tr>To : <%= @billing.services_room.dateend %></tr>
    <tr>Exported at : <%= @billing.services_room.created_at %></tr>
-   <tr></tr>
  </tbody>
 </table>
 
@@ -65,14 +22,16 @@
     <tr>
       <td>1</td>
       <td>Electricity</td>
-      <td><%= @billing.services_room.electbegin %>   <%= @billing.services_room.electend %> => <%= @billing.services_room.electend - @billing.services_room.electbegin %></td>
+      <td><%= @billing.services_room.electbegin %>   <%= @billing.services_room.electend %> ->
+        <%= @billing.services_room.electend - @billing.services_room.electbegin %></td>
       <td><%= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>
       <td><%= number_with_delimiter(@billing.electric)%></td>
     </tr>
     <tr>
       <td>2</td>
       <td>Water</td>
-      <td><%= @billing.services_room.waterbegin %>   <%= @billing.services_room.waterend %> => <%= @billing.services_room.waterend - @billing.services_room.waterbegin %></td>
+      <td><%= @billing.services_room.waterbegin %>   <%= @billing.services_room.waterend %>  ->
+        <%= @billing.services_room.waterend - @billing.services_room.waterbegin %></td>
       <td><%= Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost %></td>
       <td><%= @billing.water %></td>
     </tr>
@@ -133,11 +92,31 @@
       <td><%= @billing.rentingfee %></td>
     </tr>
     <tr>
+      <td>11</td>
+      <td colspan="3">Bonus/Minus</td>
+      <td><%= @billing.bominus %></td>
+    </tr>
+    <tr>
       <td colspan="4">TOTAL</td>
-<!--      <td><%#= @billing.services_room.electbegin %>   <%#= @billing.services_room.electend %> => <%#= @billing.services_room.electend - @billing.services_room.electbegin %></td>-->
-<!--      <td><%#= Service.find_by(admin_id: current_admin.id,name: "Dien").cost %></td>-->
-      <td><b><center><%= @billing.total %></center></b></td>
+      <td><b><%= @billing.total %></b></td>
     </tr>
   </tbody>
 </table>
 <br>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Note</th>
+      <th colspan="2">Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colspan="3"> <%=@billing.note %></td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+
+  </tbody>
+</table>

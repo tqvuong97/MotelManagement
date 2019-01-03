@@ -1,14 +1,14 @@
 
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @area.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @area.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @area.address %>
-</p>
-
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+  <p>
+    <strong>Address:</strong>
+    <%= @area.address %>
+  </p>
+</div>
+<%= link_to 'Edit', edit_area_path(@area),class: "btn btn-success" %> |
+<%= link_to 'Back', areas_path, class: "btn btn-warning" %>

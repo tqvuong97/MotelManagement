@@ -11,50 +11,17 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= form.label :electric %>
-    <%= form.number_field :electric %>
+    <%= form.label :bominus %>
+    <%= form.number_field :bominus %>
   </div>
 
   <div class="field">
-    <%= form.label :water %>
-    <%= form.number_field :water %>
+    <%= form.label :note %>
+    <%= form.text_field :note %>
   </div>
 
-  <div class="field">
-    <%= form.label :internet %>
-    <%= form.number_field :internet %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cleaner %>
-    <%= form.number_field :cleaner %>
-  </div>
-
-  <div class="field">
-    <%= form.label :parking %>
-    <%= form.number_field :parking %>
-  </div>
-
-  <div class="field">
-    <%= form.label :laundry %>
-    <%= form.number_field :laundry %>
-  </div>
-
-  <div class="field">
-    <%= form.label :option1 %>
-    <%= form.number_field :option1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :option2 %>
-    <%= form.number_field :option2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :option3 %>
-    <%= form.number_field :option3 %>
-  </div>
   <%= form.hidden_field :services_room_id , value: params[:services_room_id] %>
 
   <div class="actions">
