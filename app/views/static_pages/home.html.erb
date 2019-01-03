@@ -41,6 +41,11 @@
     display: inline-block;
     transition: background-color 0.6s ease;
   }
+  #typewriter {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 2em;
+    line-height: 120%;
+  }
 
 
 
@@ -98,6 +103,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: 'Special Elite', sans-serif;
+    font-size: 40px;
   }
 
   h2:before,
@@ -115,7 +122,7 @@
       font-size: 70px;
       color: #00F260;
       text-align: center;
-      padding-left: 37%;
+      padding-left: 42%;
     }
     h4{
       text-align: center;
@@ -141,10 +148,38 @@
       text-align: center;
       font-size: 30px;
     }
+    .img-responsive.img-circle{
+      width: 90px;
+      height: 90px;
+    }
+  .text-balloon {
+    position: relative;
+    background: #00688b;
+    border-radius: .4em;
+    padding: 10px;
+    color: white;
+
+  }
+
+  .text-balloon:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 25px solid transparent;
+    border-right-color: #00688b;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -12.5px;
+    margin-left: -25px;
+  }
+
 </style>
 <!--Banner-->
 <div class="image-container home1">
-  <div class="texthome1">WELCOME TO MOTEL MANAGEMENT SYSTEM</div>
+  <div class="texthome1">WELCOME TO INN MANAGEMENT SYSTEM</div>
 </div>
 <br>
 
@@ -180,7 +215,7 @@
   <h2><span>CORE VALUES</span></h2>
 </div></br></br>
 </br></br>
-<div class="container" style="width: 100%">
+<div class="container">
 
   <div class="row">
     <div class="col-md-4 ">
@@ -235,39 +270,98 @@
   <div class="col-md-3">
     <div class="card">
       <div class="card-header card bg-success text-white">3 years</div>
-      <div class="card-body" style="color: #008b00">278,000</div>
+      <div class="card-body" style="color: #008b00">275,000</div>
       <div class="card-footer">Footer</div>
     </div>
   </div>
   <div class="col-md-3">
     <div class="card">
       <div class="card-header card bg-warning text-white">5 years</div>
-      <div class="card-body" style="color: #ffd700">470,000</div>
+      <div class="card-body" style="color: #ffd700">450,000</div>
       <div class="card-footer">Footer</div>
     </div>
   </div>
   <div class="col-md-3">
     <div class="card">
       <div class="card-header card bg-danger text-white">10 years</div>
-      <div class="card-body" style="color: #ee2c2c">950,000</div>
+      <div class="card-body" style="color: #ee2c2c">870,000</div>
       <div class="card-footer">Footer</div>
     </div>
   </div>
 </div>
+<br><br><br>
+
+<h2>FEEDBACKS</h2>
+<br><br>
+<div class="container">
+  <div class="row">
+    <!-- Customer's Feed back -->
+
+      <div class="col-md-12">
+
+          <div class="item">
+            <div class="row">
+              <div class="col-md-2 col-xs-4">
+                <img src="/assets/fb1.jpg" alt="Review 1" class="img-responsive img-circle" />
+                <p style="text-align: center;font-weight: bold;font-size: 15px">Quang Tran</p>
+              </div>
+              <div class="col-md-4 col-xs-8">
+
+                <div class="text-balloon">The UI is very beautiful, it should be further promoted!
+                   </div>
+              </div>
 
 
+              <div class="col-md-2 col-xs-4"> <img src="/assets/fb2.jpeg" alt="Review 2" class="img-responsive img-circle" />
+                <p style="text-align: center;font-weight: bold;font-size: 15px">Nghi Nguyen</p>
+              </div>
+              <div class="col-md-4 col-xs-8">
+                <div class="text-balloon">
+                  I will rate for this site 5/5.
+                  Quick and timely customer care .
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="col-md-2 col-xs-4"> <img src="/assets/fb3.jpg" alt="Review 3" class="img-responsive img-circle" />
+                <p style="text-align: center;font-weight: bold;font-size: 15px">Tam Luu</p>
+              </div>
+              <div class="col-md-4 col-xs-8">
+                <div class="text-balloon">
+                  Easy to use, friendly UI . I will buy a 5-year package for my inn .
+                   </div>
+              </div>
 
 
+              <div class="col-md-2 col-xs-4"> <img src="/assets/fb4.jpg" alt="Review 4" class="img-responsive img-circle" />
+                <p style="text-align: center;font-weight: bold;font-size: 15px">Dat Diep</p>
+              </div>
+              <div class="col-md-4 col-xs-8">
+                <div class="text-balloon">Great and useful website , I will recommend to everyone.
+                  Thank you very much .  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
 
+  <br>
+<h2>CONTACT</h2><br>
 
+<br><br>
+  <script>
+      $(function(){
+          $('.h2').typewrite( {
 
-
-
-
-
-
-
-
+                  speed: 1000
+              }
+          );
+      });
+</script>
 
 <script>
     var slideIndex = 0;
@@ -289,40 +383,8 @@
         dots[slideIndex-1].className += " active";
         setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
+
 </script>
 
-    <!-- Footer -->
-    <footer style="margin-top: 10px !important">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-3 col-xs-8 ">
-            <h4 style="margin-bottom: 10px !important; color: white">Address</h4>
-            <div style="background-color: #75c5cf; width: 50px; height: 80px;">
-              <img id="default-logo" src="/assets/logo.jpg" alt="King Motel logo" style="height:80px;width: 50px ">
-            </div>
 
-            <address style="margin-top: 10px;">
-              <strong>King, Inc.</strong><br>
-              27/21 Nguyen Thi Thap Street<br>
-              District 7, HCM <br>
-              <abbr title="Phone">Phone:</abbr> <a href="tel:+84987113442">+84 987 113 442</a><br>
-              <abbr title="Email">Email:</abbr> <a href="mailto: quocvuong.tqv97@gmail.com ">quocvuong.tqv97@gmail.com</a><br>
-            </address>
-          </div>
-          <div class="col-md-9 col-sm-9 col-lg-9">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.9922575274411!2d106.72864548812105!3d10.736870317145712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175257c75d46b2d%3A0x3badc14f16dd95e3!2zMTUvMTBCIE5ndXnhu4VuIFRo4buLIFRo4bqtcCwgVMOibiBQaMO6LCBRdeG6rW4gNywgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1545669646063" width="100%" height="320px" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6"> &copy; 2019 All Rights Reserved by Quoc Vuong</div>
-            <div class="col-xs-6 text-right">
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </footer>
 
