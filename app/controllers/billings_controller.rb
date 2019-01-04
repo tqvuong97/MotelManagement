@@ -26,20 +26,20 @@ class BillingsController < ApplicationController
   # GET /billings/1
   # GET /billings/1.json
   def show
-    client = Nexmo::Client.new(
-        api_key: "29784dbb",
-        api_secret: "R7RrOS0lhE5IlACX"
-    )
-
-    client.sms.send(
-        from: "51503120",
-        to: "84987113442",
-        text: "Bill From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s +
-            " Total : " + @billing.total.to_s
-    )
+    # client = Nexmo::Client.new(
+    #     api_key: "29784dbb",
+    #     api_secret: "R7RrOS0lhE5IlACX"
+    # )
+    #
+    # client.sms.send(
+    #     from: "51503120",
+    #     to: "84987113442",
+    #     text: "Bill From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s +
+    #         " Total : " + @billing.total.to_s
+    # )
     respond_to do |format|
-      format.html { redirect_to room_services_room_billing_path(@billing.services_room.room.id,@billing.services_room_id) ,notice: 'Billing was successfully exported.'}
-      format.json { render :show, status: :created, location: @billing }
+      # format.html { redirect_to room_services_room_billing_path(@billing.services_room.room.id,@billing.services_room_id) ,notice: 'Billing was successfully exported.'}
+      # format.json { render :show, status: :created, location: @billing }
       format.xls
     end
     @t = @billing.services_room.room.guests

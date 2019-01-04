@@ -39,14 +39,11 @@
         <td><%= number_with_delimiter(billing.total) %></td>
         <td><%= billing.created_at %></td>
         <td><%= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>
-<!--        <td><%#= link_to 'Edit', edit_billing_path(billing) %></td>-->
         <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<!--      <td><%#= link_to 'Export',billing.exp(billing.id) %></td>-->
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<!--<td><%#= link_to 'Export',room_services_room_billings_path(format: "xls") %></td>-->
 <%= link_to 'New Billing', new_room_services_room_billing_path %>
