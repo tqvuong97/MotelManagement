@@ -3,7 +3,7 @@
 <h2>Rooms</h2>
 <style>
   input[type=text] {
-    width: 130px;
+    width: 160px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -26,47 +26,53 @@
     <div class="col-md-offset-4 "></div>
     <div class="col-md-4 ">
       <%= form_tag(rooms_path, method: :get) do %>
-        <%= text_field_tag :r, params[:r] %>
+        <%= text_field_tag :r, params[:r] ,placeholder: "Search room"%>
         <%#= submit_tag, name: nil%>
       <% end %>
     </div>
   </div>
 </div>
+<%= link_to '+ New Room', new_room_path ,class: "btn btn-primary btn-lg"%>
 
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Price</th>
-      <th>Slot</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container" >
+  <div class="row" >
     <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.name %></td>
-        <td><%= room.status %></td>
-        <td><%= room.price %></td>
-        <td><%= room.slot %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "List Devices", room_devices_rooms_path(room.id) %></td>
-        <td><%= link_to "List Guests", room_guests_path(room.id) %></td>
-        <td><%= link_to "List Services used", room_services_rooms_path(room.id) %></td>
-
-      </tr>
+      <div class="card col-lg-2 col-md-6 col-sm-8 col-xs-12 ">
+        <div class="card-header bg-info text-white"><%= link_to room.name.upcase, edit_room_path(room) ,class: "btn btn-info text-white",style: "font-size: 20px;font-weight: bold"%><i style='font-size:24px' class='fas'>&#xf236;</i></div>
+        <div class="card-body">
+            <div class="container">
+              <%if room.status == "available" %>
+                <div class="text-success"><i style='font-size:24px' class='fas'>&#xf00c;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
+              <%elsif room.status == "hired" %>
+                <div class="text-danger"><i style='font-size:24px' class='fas'>&#xf31e;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
+              <%else %>
+                <div class="text-warning"><i style='font-size:24px' class='fas'>&#xf6e3;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
+              <%end %>
+              <div class="text-info"><i style='font-size:24px' class='far'>&#xf3d1;</i>&nbsp;&nbsp; <%= number_with_delimiter(room.price) %></div>
+              <div ><i style='font-size:24px' class='fas'>&#xf500;</i>&nbsp;&nbsp;<%= room.guests.count %> / <%= room.slot %></div>
+              <div>Deposit : <%= room.deposit %> </div>
+            </div>
+        </div>
+        <div class="card-footer">
+          <div class="row" >
+            <%= link_to "Services", room_services_rooms_path(room.id),class: "col-md-6 btn btn-primary"%>
+            <%= link_to "Devices", room_devices_rooms_path(room.id),class: "col-md-6 btn btn-success"  %>
+          </div>
+          <div class="row">
+            <%= link_to "Guests", room_guests_path(room.id),class: "col-md-6 btn btn-info"  %>
+            <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } ,class: "col-md-6 btn btn-danger"%>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
+
+
 
 <br>
 
-<%= link_to 'New Room', new_room_path %>
+
 <%#= render 'createmanyrooms' %>
 <%#= link_to 'New',newrooms_path %>

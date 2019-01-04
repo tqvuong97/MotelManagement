@@ -6,19 +6,19 @@
 <div class="container">
   <div class="row">
     <% @areas.each do |area| %>
-      <div class="card col-md-2">
-        <div class="card-header bg-info text-white" style="font-weight: bold"><%= area.name.upcase %>&nbsp;&nbsp;<i class="material-icons">&#xe568;</i></div>
+      <div class="card col-md-3">
+        <div class="card-header bg-info text-white" style="font-weight: bold">&nbsp;<%= link_to area.name.upcase, edit_area_path(area), class: "btn btn-info text-white",style: "font-size: 20px;font-weight: bold" %>
+         <i class="material-icons">&#xe568;</i></div>
         <div class="card-body"><%=area.address %></div>
         <div class="card-footer">
           <div class="row">
-            <div class="col-md-4 "><%= link_to 'Show', area ,class: "btn btn-info"%></div>
-            <div class="col-md-4 "><%= link_to 'Edit', edit_area_path(area), class: "btn btn-success" %></div>
-            <div class="col-md-4 "><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %></div>
+            <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } ,class: "col-md-12 btn btn-danger"%>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+
 </div>
 
 <br>

@@ -5,18 +5,17 @@
 <div class="container">
   <div class="row">
     <% @devices.each do |device| %>
-      <div class="card col-md-2">
-        <div class="card-header bg-info text-white" style="font-weight: bold"><%= device.name.upcase %>&nbsp;&nbsp;<i class="material-icons">&#xe337;</i></div>
+      <div class="card col-md-3">
+        <div class="card-header bg-info text-white"><%= link_to device.name.upcase , edit_device_path(device),class: "btn btn-info text-white",style: "font-size: 20px;font-weight: bold" %>&nbsp;<i class="material-icons">&#xe337;</i></div>
         <div class="card-body">
           <div><b>Branch : </b><%= device.branch %></div>
           <div><b>Price : </b><%= device.price %></div>
         </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-4 "><%= link_to 'Show', device ,class: "btn btn-info"%></div>
-            <div class="col-md-4 "><%= link_to 'Edit', edit_device_path(device), class: "btn btn-success" %></div>
-            <div class="col-md-4 "><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %></div>
-          </div>
+        <div class="card-footer" >
+
+            <div class="row">
+              <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' },class: "col-md-12 btn btn-danger"%>
+            </div>
         </div>
       </div>
     <% end %>

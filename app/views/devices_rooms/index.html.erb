@@ -1,10 +1,19 @@
-
+<style>
+  td{
+    font-size: 20px;
+  }
+</style>
 <h2>Devices Rooms</h2>
+<%= link_to 'New Devices Room', new_room_devices_room_path , class: "btn btn-info"%>
 
-<table>
+<div class="container center-block">
+  <div class="row">
+    <div class="col-md-offset-3"></div>
+    <div class="col-md-6">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>id</th>
+      <th>Name</th>
       <th>Status</th>
       <th>Quantity</th>
       <th>Datebegin</th>
@@ -19,15 +28,19 @@
         <td><%= devices_room.status %></td>
         <td><%= devices_room.quantity %></td>
         <td><%= devices_room.datebegin %></td>
-        <td><%= link_to 'Show',devices_room%></td>
-        <td><%= link_to 'Edit', edit_room_devices_room_path(@room,devices_room) %></td>
-        <td><%= link_to 'Destroy',[@room,devices_room] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--        <td><%#= link_to 'Show',devices_room%></td>-->
+        <td><%= link_to 'Edit', edit_room_devices_room_path(@room,devices_room) ,class: "btn btn-success"%></td>
+        <td><%= link_to 'Destroy',[@room,devices_room] , method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
 <!--        room_devices_rooms_path(devices_room)-->
       </tr>
     <% end %>
   </tbody>
 </table>
+    </div>
+    <div class="col-md-offset-3"></div>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'New Devices Room', new_room_devices_room_path %>
+<%= link_to 'Back', rooms_path,class: "btn btn-warning" %>

@@ -1,3 +1,4 @@
+
 class Billing < ApplicationRecord
   belongs_to :services_room
   def self.to_csv(options = {})

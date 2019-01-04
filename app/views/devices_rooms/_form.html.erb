@@ -1,3 +1,7 @@
+<div class="container center-block" >
+  <div class="row">
+    <div class="col-md-offset-4 "></div>
+    <div class="col-md-4 ">
 <%= form_with(model: devices_room, local: true) do |form| %>
   <% if devices_room.errors.any? %>
     <div id="error_explanation">
@@ -19,20 +23,23 @@
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :datebegin %>
-    <%= form.date_select :datebegin %>
+    <%= form.date_select :datebegin ,class: "form-control"%>
   </div>
   <div class="field">
     <%= form.label :device_id %>
-    <%= form.select(:device_id, options_for_select(@devices)) %>
+    <%= form.select(:device_id, options_for_select(@devices),class: "form-control") %>
   </div>
   <%= form.hidden_field :room_id ,value: params[:room_id] %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+    </div>
+  </div>
+</div>

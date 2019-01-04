@@ -5,7 +5,7 @@
     background: #00F260;
     background: -webkit-linear-gradient(to right, #0575E6, #00F260);
     background: linear-gradient(to right, #0575E6, #00F260);
-
+height: 80px;
   }
   .nav-link:hover{
     background-color: #1CA1F2;
@@ -86,19 +86,16 @@
             </a>
           </li>
         </ul>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="<%= edit_admin_registration_path %>">
+            <ul class="navbar-nav ml-auto" >
+              <li class="nav-item active" >
+                <a class="nav-link" href="<%= edit_admin_registration_path %>" style="font-size: 15px">
                   <i class="glyphicon glyphicon-heart"></i>
                   <%=current_admin.email %>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " >
-                  <i class="glyphicon glyphicon-log-out" ></i>
                   <%= link_to('Log out', destroy_admin_session_path, method: :delete) %>
                 </a>
+
               </li>
+
             </ul>
           <%else %>
           <ul class="navbar-nav ml-auto">

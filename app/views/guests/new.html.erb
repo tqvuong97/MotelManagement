@@ -1,5 +1,5 @@
-<h1>New Guest</h1>
+<h2>New Guest</h2>
 
 <%= render 'form', guest: @guest %>
 
-<%= link_to 'Back', guests_path %>
+<%= link_to 'Back', room_guests_path(params[:room_id]),class: "btn btn-warning" %>
