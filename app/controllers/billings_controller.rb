@@ -44,6 +44,7 @@ class BillingsController < ApplicationController
     @billing.option2 = 0
     @billing.option3 = 0
     @billing.bominus = 0
+    @billing.payment = false
   end
 
   # GET /billings/1/edit
@@ -54,7 +55,7 @@ class BillingsController < ApplicationController
   # POST /billings.json
   def create
     @billing = Billing.new(billing_params)
-    @billing.payment = false
+
     @services_room = ServicesRoom.find(@billing.services_room_id)
     @billing.electric = (@services_room.electend - @services_room.electbegin)*Service.find_by(admin_id: current_admin.id,name: "Dien").cost
     @billing.water = (@services_room.waterend - @services_room.waterbegin)*Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost
