@@ -82,10 +82,8 @@
     <br><br>
 
 
-
     <div class="container">
       <div class="row">
-
     <% @sr.each do |srr| %>
       <% @bills = Billing.where("services_room_id = ?",srr.id) %>
 

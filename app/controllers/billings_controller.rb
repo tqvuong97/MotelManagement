@@ -20,8 +20,7 @@ class BillingsController < ApplicationController
     # client.sms.send(
     #     from: "51503120",
     #     to: "84987113442",
-    #     text: "Bill From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s +
-    #         " Total : " + @billing.total.to_s
+    #     text: "-Bill-  " + "  Room : "+@billing.services_room.room.name.to_s+ " From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s + " Total : " + @billing.total.to_s
     # )
     respond_to do |format|
       # format.html { redirect_to room_services_room_billing_path(@billing.services_room.room.id,@billing.services_room_id) ,notice: 'Billing was successfully exported.'}
@@ -32,7 +31,6 @@ class BillingsController < ApplicationController
     @t.each do |t|
       # SendBillingMailer.sample_email(t,@billing).deliver_now
     end
-
   end
 
   # GET /billings/new
@@ -44,7 +42,7 @@ class BillingsController < ApplicationController
     @billing.option2 = 0
     @billing.option3 = 0
     @billing.bominus = 0
-    @billing.payment = false
+
   end
 
   # GET /billings/1/edit
@@ -55,7 +53,7 @@ class BillingsController < ApplicationController
   # POST /billings.json
   def create
     @billing = Billing.new(billing_params)
-
+    @billing.payment = false
     @services_room = ServicesRoom.find(@billing.services_room_id)
     @billing.electric = (@services_room.electend - @services_room.electbegin)*Service.find_by(admin_id: current_admin.id,name: "Dien").cost
     @billing.water = (@services_room.waterend - @services_room.waterbegin)*Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost

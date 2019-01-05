@@ -41,12 +41,17 @@
         <td><%= number_with_delimiter(billing.total) %></td>
         <td><%= billing.created_at %></td>
         <td><%= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>
-        <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],params[:services_room_id],billing) ,method: :patch%></td>
+        <td><%= link_to 'Destroy', room_services_room_billing_path(params[:room_id],params[:services_room_id],billing), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%if billing.payment == false %>
+            <%= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],params[:services_room_id],billing) ,method: :patch%>
+          <%end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
 <%= link_to 'New Billing', new_room_services_room_billing_path %>

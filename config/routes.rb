@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   resources :guests
   resources :devices_rooms
-
+  get "/chart" , to: "rooms#createchart"
   resources :devices
   resources :rooms do
     resources :devices_rooms
+
   end
   resources :rooms do
     resources :services_rooms do

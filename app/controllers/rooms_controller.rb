@@ -12,21 +12,13 @@ class RoomsController < ApplicationController
     else
       @rooms = Room.where("admin_id = ?",current_admin.id).order('created_at DESC')
     end
-sql = "SELECT distinct month(s.dateend) as thang , sum(b.total) as tong FROM services_rooms s ,billings b where room_id in (select id from rooms where admin_id = "+current_admin.id.to_s+") and s.id = b.services_room_id group by(month(s.dateend)); "
-@array = ActiveRecord::Base.connection.execute(sql).to_h
-
-
-    # @roomss = @rooms
-    # @roomss.each do |r1|
-    #   @r11 = r1.services_rooms.each do |r2|
-    #     # @r22 = r2.billings.each do |r3|
-    #     #   @r33 = r3
-    #     # end
-    #
-    #   end
 
   end
 
+  def createchart
+    sql = "SELECT distinct month(s.dateend) as thang , sum(b.total) as tong FROM services_rooms s ,billings b where room_id in (select id from rooms where admin_id = "+current_admin.id.to_s+") and s.id = b.services_room_id group by(month(s.dateend)); "
+    @array = ActiveRecord::Base.connection.execute(sql).to_h
+  end
 
   # GET /rooms/1
   # GET /rooms/1.json
