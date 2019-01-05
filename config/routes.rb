@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :services
   get "/newservices" ,to: "services#createservice"
   get "/newrooms" ,to: "rooms#createmanyrooms"
-  get "/export" ,to: "billings#exp"
+  # get "/export" ,to: "billings#exp"
   get "/guestinfo",to: "static_pages#guestinfo"
+
   resources :guests
   resources :devices_rooms
 
@@ -16,7 +17,10 @@ Rails.application.routes.draw do
   end
   resources :rooms do
     resources :services_rooms do
-      resources :billings
+      resources :billings do
+        patch "/payment",to: "billings#updatepayment"
+      end
+
     end
   end
   resources :rooms do

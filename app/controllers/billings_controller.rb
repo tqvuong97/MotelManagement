@@ -7,20 +7,6 @@ class BillingsController < ApplicationController
   # GET /billings.json
   def index
     @billings = Billing.where("services_room_id = ?",params[:services_room_id])
-    # @services_room = ServicesRoom.find(@billings.services_room_id)
-    # @room = Room.find(@services_room.room_id)
-    respond_to do |format|
-      format.html
-      format.xls #{send_data @billings.to_csv(col_sep: "\t")}
-
-    end
-  end
-  def exp(idB)
-@billing = Billing.find(idB)
-    respond_to do |format|
-      format.html
-      format.xls
-    end
   end
 
   # GET /billings/1
@@ -57,8 +43,7 @@ class BillingsController < ApplicationController
     @billing.option1 = 0
     @billing.option2 = 0
     @billing.option3 = 0
-
-    # @service = Service.find(params[:service_id])
+    @billing.bominus = 0
   end
 
   # GET /billings/1/edit
@@ -68,8 +53,8 @@ class BillingsController < ApplicationController
   # POST /billings
   # POST /billings.json
   def create
-
     @billing = Billing.new(billing_params)
+    @billing.payment = false
     @services_room = ServicesRoom.find(@billing.services_room_id)
     @billing.electric = (@services_room.electend - @services_room.electbegin)*Service.find_by(admin_id: current_admin.id,name: "Dien").cost
     @billing.water = (@services_room.waterend - @services_room.waterbegin)*Service.find_by(admin_id: current_admin.id,name: "Nuoc").cost
@@ -106,6 +91,18 @@ class BillingsController < ApplicationController
       end
     end
   end
+  def updatepayment
+    @billing = Billing.find(params[:billing_id])
+    @billing.payment = true
+    @billing.save
+    # # @billing.payment = true
+    respond_to do |format|
+
+      # @billing.update_attribute(payment: true)
+      format.html{ redirect_to room_services_room_billings_path(params[:room_id],params[:services_room_id]), notice: "This billing was successfully paid." }
+    end
+  end
+
 
   # DELETE /billings/1
   # DELETE /billings/1.json
@@ -125,6 +122,6 @@ class BillingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def billing_params
-      params.require(:billing).permit(:electric, :water, :internet, :cleaner, :parking, :laundry, :option1, :option2, :option3,:services_room_id,:total,:rentingfee,:bominus,:note)
+      params.require(:billing).permit(:electric, :water, :internet, :cleaner, :parking, :laundry, :option1, :option2, :option3,:services_room_id,:total,:rentingfee,:bominus,:note,:payment)
     end
 end
