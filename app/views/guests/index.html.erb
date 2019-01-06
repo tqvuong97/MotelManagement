@@ -6,51 +6,95 @@
 </style>
 
 <%= link_to 'New Guest', new_room_guest_path,class: "btn btn-info" %>
-
-  <div class="container center-block">
-    <div class="row">
-      <div class="col-md-offset-1"></div>
-      <div class="col-md-10">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Room</th>
-      <th>Name</th>
-      <th>Birth</th>
-      <th>Address</th>
-      <th>Identitycard</th>
-      <th>Phonenumber</th>
-      <th>Image</th>
-      <th>Job</th>
-      <th>Notice</th>
-      <th>Email</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%if @guests.blank? %>
+  <p>Nobody in this room (<%= params[:room_id] %>)</p>
+  <%else %>
+<div class="container">
+  <div class="row">
     <% @guests.each do |guest| %>
-      <tr>
-        <td><%= guest.room.name %></td>
-        <td><%= guest.name %></td>
-        <td><%= guest.birth %></td>
-        <td><%= guest.address %></td>
-        <td><%= guest.identitycard %></td>
-        <td><%= guest.phonenumber %></td>
-        <td><%= guest.image %></td>
-        <td><%= guest.job %></td>
-        <td><%= guest.notice %></td>
-        <td><%= guest.email %></td>
-        <td><%= link_to 'Edit', edit_room_guest_path(guest.room_id,guest),class: "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+      <div class="card col-lg-4 col-md-6 col-sm-8 col-xs-12 ">
+        <div class="card-header">
+          <%if !guest.image_url.nil? %>
+            <%= image_tag guest.image_url ,style: "height: 200px" %>
+          <%else %>
+            <%= image_tag "/assets/img_avatar1.png",style: "height: 200px"%>
+          <%end %>
+        </div>
+        <div class="card-body">
+          <div><i style='font-size:24px' class='fas'>&#xf007;</i> Name : <b> <%= guest.name %></b></div>
+          <div><i style='font-size:24px' class='fas'>&#xf1fd;</i> Birthday : <%= guest.birth %></div>
+          <div><i style='font-size:24px' class='fas'>&#xf2b9;</i> Address : <%= guest.address %></div>
+          <div><i style='font-size:24px' class="material-icons">&#xe8a6;</i> ID Card : <%= guest.identitycard %></div>
+          <div><i style='font-size:24px' class="material-icons">&#xe324;</i> Phone : <%= guest.phonenumber %></div>
+          <div><i style='font-size:24px' class='fas'>&#xf255;</i> Job : <%= guest.job %></div>
+          <div><i style='font-size:24px' class='fas'>&#xf249;</i> Note : <%= guest.notice %></div>
+          <div><i style='font-size:24px' class="material-icons">&#xe0be;</i> Email : <%= guest.email %></div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <%= link_to 'Edit', edit_room_guest_path(guest.room_id,guest),class: "btn btn-success col-md-6" %>
+            <%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger col-md-6"%>
+          </div>
+        </div>
       </div>
-      <div class="col-md-offset-1"></div>
-    </div>
+    <% end %>
   </div>
+</div>
+<%end %>
+
+
+
+<!--  <div class="container center-block">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-offset-1"></div>-->
+<!--      <div class="col-md-10">-->
+<!--<table class="table table-hover">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Room</th>-->
+<!--      <th>Name</th>-->
+<!--      <th>Birth</th>-->
+<!--      <th>Address</th>-->
+<!--      <th>Identitycard</th>-->
+<!--      <th>Phonenumber</th>-->
+<!--      <th>Image</th>-->
+<!--      <th>Job</th>-->
+<!--      <th>Notice</th>-->
+<!--      <th>Email</th>-->
+<!--      <th colspan="2"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @guests.each do |guest| %>
+<!--      <tr>-->
+<!--        <td><%#= guest.room.name %></td>-->
+<!--        <td><%#= guest.name %></td>-->
+<!--        <td><%#= guest.birth %></td>-->
+<!--        <td><%#= guest.address %></td>-->
+<!--        <td><%#= guest.identitycard %></td>-->
+<!--        <td><%#= guest.phonenumber %></td>-->
+<!--        <td>-->
+          <%#if !guest.image_url.nil? %>
+            <%#= image_tag guest.image_url %>
+          <%#else %>
+            <%#= image_tag "/assets/img_avatar1.png"%>
+          <%#end %>
+
+<!--        </td>-->
+<!--        <td><%#= guest.job %></td>-->
+<!--        <td><%#= guest.notice %></td>-->
+<!--        <td><%#= guest.email %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_room_guest_path(guest.room_id,guest),class: "btn btn-success" %></td>-->
+<!--        <td><%#= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
+<!--      </div>-->
+<!--      <div class="col-md-offset-1"></div>-->
+<!--    </div>-->
+<!--  </div>-->
 <%= link_to 'Back', rooms_path,class: "btn btn-warning" %>
