@@ -1,3 +1,7 @@
+<div class="container center-block" >
+  <div class="row">
+    <div class="col-md-offset-4 "></div>
+    <div class="col-md-4">
 <%= form_with(model: services_room, local: true) do |form| %>
   <% if services_room.errors.any? %>
     <div id="error_explanation">
@@ -13,72 +17,75 @@
 
   <div class="field">
     <%= form.label :datebegin %>
-    <%= form.date_select :datebegin %>
+    <%= form.date_select :datebegin ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :dateend %>
-    <%= form.date_select :dateend %>
+    <%= form.date_select :dateend ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :electbegin %>
-    <%= form.number_field :electbegin %>
+    <%= form.number_field :electbegin ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :electend %>
-    <%= form.number_field :electend %>
+    <%= form.number_field :electend ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :waterbegin %>
-    <%= form.number_field :waterbegin %>
+    <%= form.number_field :waterbegin ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :waterend %>
-    <%= form.number_field :waterend %>
+    <%= form.number_field :waterend ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :internet %>
-    <%= form.number_field :internet %>
+    <%= form.number_field :internet ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :cleaner %>
-    <%= form.number_field :cleaner %>
+    <%= form.number_field :cleaner ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :parking %>
-    <%= form.number_field :parking %>
+    <%= form.number_field :parking ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :laundry %>
-    <%= form.number_field :laundry %>
+    <%= form.number_field :laundry ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :option1 %>
-    <%= form.number_field :option1 %>
+    <%= form.number_field :option1 ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :option2 %>
-    <%= form.number_field :option2 %>
+    <%= form.number_field :option2 ,class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :option3 %>
-    <%= form.number_field :option3 %>
+    <%= form.number_field :option3 ,class: "form-control"%>
   </div>
   <%= form.hidden_field :room_id , value: params[:room_id] %>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+    </div>
+  </div>
+</div>

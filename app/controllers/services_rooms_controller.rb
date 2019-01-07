@@ -4,8 +4,10 @@ class ServicesRoomsController < ApplicationController
   # GET /services_rooms
   # GET /services_rooms.json
   def index
-    @services_rooms = ServicesRoom.joins("INNER JOIN rooms ON rooms.id = services_rooms.room_id").where("room_id = ?",params[:room_id].to_i)
-    @room = Room.find(params[:room_id])
+    @services_rooms = ServicesRoom.joins("INNER JOIN rooms ON rooms.id = services_rooms.room_id").where("room_id = ?",params[:room_id].to_i).order('created_at DESC')
+    if params[:room_id]
+      @room = Room.find(params[:room_id])
+    end
   end
 
   # GET /services_rooms/1
@@ -43,7 +45,7 @@ class ServicesRoomsController < ApplicationController
 
     respond_to do |format|
       if @services_room.save
-        format.html { redirect_to room_services_room_path(@services_room.room_id,@services_room.id), notice: 'Services room was successfully created.' }
+        format.html { redirect_to room_services_rooms_path(@services_room.room_id,@services_room.id), notice: 'Services room was successfully created.' }
         format.json { render :show, status: :created, location: @services_room }
       else
         format.html { render :new }
@@ -57,7 +59,7 @@ class ServicesRoomsController < ApplicationController
   def update
     respond_to do |format|
       if @services_room.update(services_room_params)
-        format.html { redirect_to room_services_room_path(@services_room.room_id), notice: 'Services room was successfully updated.' }
+        format.html { redirect_to room_services_rooms_path(@services_room.room_id), notice: 'Services room was successfully updated.' }
         format.json { render :show, status: :ok, location: @services_room }
       else
         format.html { render :edit }

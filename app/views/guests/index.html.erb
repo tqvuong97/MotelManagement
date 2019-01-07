@@ -6,8 +6,9 @@
 </style>
 
 <%= link_to 'New Guest', new_room_guest_path,class: "btn btn-info" %>
+<%= link_to 'Back', rooms_path,class: "btn btn-warning" %> <br>
 <%if @guests.blank? %>
-  <p>Nobody in this room (<%= params[:room_id] %>)</p>
+  <p>Nobody in this room</p>
   <%else %>
 <div class="container">
   <div class="row">
@@ -41,60 +42,3 @@
   </div>
 </div>
 <%end %>
-
-
-
-<!--  <div class="container center-block">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-offset-1"></div>-->
-<!--      <div class="col-md-10">-->
-<!--<table class="table table-hover">-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Room</th>-->
-<!--      <th>Name</th>-->
-<!--      <th>Birth</th>-->
-<!--      <th>Address</th>-->
-<!--      <th>Identitycard</th>-->
-<!--      <th>Phonenumber</th>-->
-<!--      <th>Image</th>-->
-<!--      <th>Job</th>-->
-<!--      <th>Notice</th>-->
-<!--      <th>Email</th>-->
-<!--      <th colspan="2"></th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-
-<!--  <tbody>-->
-    <%# @guests.each do |guest| %>
-<!--      <tr>-->
-<!--        <td><%#= guest.room.name %></td>-->
-<!--        <td><%#= guest.name %></td>-->
-<!--        <td><%#= guest.birth %></td>-->
-<!--        <td><%#= guest.address %></td>-->
-<!--        <td><%#= guest.identitycard %></td>-->
-<!--        <td><%#= guest.phonenumber %></td>-->
-<!--        <td>-->
-          <%#if !guest.image_url.nil? %>
-            <%#= image_tag guest.image_url %>
-          <%#else %>
-            <%#= image_tag "/assets/img_avatar1.png"%>
-          <%#end %>
-
-<!--        </td>-->
-<!--        <td><%#= guest.job %></td>-->
-<!--        <td><%#= guest.notice %></td>-->
-<!--        <td><%#= guest.email %></td>-->
-<!--        <td><%#= link_to 'Edit', edit_room_guest_path(guest.room_id,guest),class: "btn btn-success" %></td>-->
-<!--        <td><%#= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>-->
-<!--      </tr>-->
-    <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<br>-->
-<!--      </div>-->
-<!--      <div class="col-md-offset-1"></div>-->
-<!--    </div>-->
-<!--  </div>-->
-<%= link_to 'Back', rooms_path,class: "btn btn-warning" %>

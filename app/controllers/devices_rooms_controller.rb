@@ -41,7 +41,7 @@ class DevicesRoomsController < ApplicationController
     # @devices_room.room_id = 1
     respond_to do |format|
       if @devices_room.save
-        format.html { redirect_to room_devices_room_path(@devices_room.room_id,@devices_room.id) ,notice: 'Devices room was successfully created.' }
+        format.html { redirect_to room_devices_rooms_path(@devices_room.room_id,@devices_room.id) ,notice: 'Devices room was successfully created.' }
         format.json { render :show, status: :created, location: @devices_room }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class DevicesRoomsController < ApplicationController
 
     respond_to do |format|
       if @devices_room.update(devices_room_params)
-        format.html { redirect_to room_devices_room_path(@devices_room.room_id), notice: 'Devices room was successfully updated.' }
+        format.html { redirect_to room_devices_rooms_path(@devices_room.room_id), notice: 'Devices room was successfully updated.' }
         format.json { render :show, status: :ok, location: @devices_room }
       else
         format.html { render :edit }

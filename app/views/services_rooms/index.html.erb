@@ -1,12 +1,21 @@
-
-
-<h2>Services Rooms</h2>
-
-<table>
+<style>
+  td{
+    font-size: 20px;
+  }
+</style>
+<h2>Services Rooms [<%=@room.name %>]</h2>
+<%= link_to 'New Services Room', new_room_services_room_path ,class: "btn btn-primary"%>
+<%= link_to 'Back', rooms_path,class: "btn btn-warning" %> <br>
+<div class="container center-block">
+  <div class="row">
+    <div class="col-md-offset-1"></div>
+    <div class="col-md-10">
+<table class="table table-striped table-responsive">
   <thead>
     <tr>
-      <th>Datebegin</th>
-      <th>Dateend</th>
+      <th colspan="1"></th>
+      <th>Date Begin</th>
+      <th>Date End</th>
       <th>Electbegin</th>
       <th>Electend</th>
       <th>Waterbegin</th>
@@ -18,13 +27,26 @@
       <th>Option1</th>
       <th>Option2</th>
       <th>Option3</th>
-      <th colspan="4"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @services_rooms.each do |services_room| %>
       <tr>
+        <td><% services_room.billings.each do |p| %>
+              <%#if services_room.billings.blank? %>
+<!--                <i style='font-size:24px ;color: orange' class="material-icons">&#xe2cc;</i>-->
+              <%#end %>
+
+              <%if p.payment == true%>
+                <i style='font-size:24px ;color: green' class='fas'>&#xf058;</i>
+              <%elsif p.payment == false%>
+                <i style='font-size:24px ;color: red' class="material-icons">&#xe5c9;</i>
+
+              <%end %>
+            <%end %>
+        </td>
         <td><%= services_room.datebegin %></td>
         <td><%= services_room.dateend %></td>
         <td><%= services_room.electbegin %></td>
@@ -38,16 +60,17 @@
         <td><%= services_room.option1 %></td>
         <td><%= services_room.option2 %></td>
         <td><%= services_room.option3 %></td>
-        <td><%= link_to 'Show', room_services_room_path(services_room.room_id,services_room.id) %></td>
-        <td><%= link_to 'Edit', edit_room_services_room_path(services_room.room_id,services_room.id) %></td>
-        <td><%= link_to 'Destroy',[@room,services_room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'List Bill',  room_services_room_billings_path(services_room.room_id,services_room.id) %></td>
+<!--        <td><%#= link_to 'Show', room_services_room_path(services_room.room_id,services_room.id) %></td>-->
+        <td><%= link_to 'Edit', edit_room_services_room_path(services_room.room_id,services_room.id) ,class: "btn btn-success"%></td>
+        <td><%= link_to 'Destroy',[@room,services_room], method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
+        <td><%= link_to 'Bill',  room_services_room_billings_path(services_room.room_id,services_room.id) ,class: "btn btn-dark"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Services Room', new_room_services_room_path %>
-<%= link_to 'Back', rooms_path,class: "btn btn-warning" %>
+    </div>
+    <div class="col-md-offset-1"></div>
+  </div>
+</div>
