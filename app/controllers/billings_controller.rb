@@ -12,12 +12,12 @@ class BillingsController < ApplicationController
   # GET /billings/1
   # GET /billings/1.json
   def show
-    # client = Nexmo::Client.new(
-    #     api_key: "29784dbb",
-    #     api_secret: "R7RrOS0lhE5IlACX"
-    # )
+    client = Nexmo::Client.new(
+        api_key: "29784dbb",
+        api_secret: "R7RrOS0lhE5IlACX"
+    )
     #
-    # client.sms.send(
+    # @client.sms.send(
     #     from: "51503120",
     #     to: "84987113442",
     #     text: "-Bill-  " + "  Room : "+@billing.services_room.room.name.to_s+ " From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s + " Total : " + @billing.total.to_s
@@ -92,6 +92,16 @@ class BillingsController < ApplicationController
   end
   def updatepayment
     @billing = Billing.find(params[:billing_id])
+    client = Nexmo::Client.new(
+        api_key: "29784dbb",
+        api_secret: "R7RrOS0lhE5IlACX"
+    )
+    client.sms.send(
+        from: "51503120",
+        to: "84987113442",
+        text: "-RECEIPT- " +@billing.services_room.room.name.to_s+ " From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s + " Paid : " + @billing.total.to_s
+    )
+
     @billing.payment = true
     @billing.save
     # # @billing.payment = true

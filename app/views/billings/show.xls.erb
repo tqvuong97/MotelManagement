@@ -1,14 +1,20 @@
 <h3>BILL</h3>
 <table>
  <tbody>
-   <tr><%= @billing.services_room.room.name %></tr>
+   <tr>
+     <th colspan="2"><%= @billing.services_room.room.name %></th>
+     <th colspan="3"><%= image_tag "/assets/qrcodeguestinfo.png"%>
+     </th>
+   </tr>
+
    <tr>From : <%= @billing.services_room.datebegin %></tr>
+
    <tr>To : <%= @billing.services_room.dateend %></tr>
    <tr>Exported at : <%= @billing.services_room.created_at %></tr>
  </tbody>
 </table>
 
-<table border="1">
+<table  border="1" class="table table-striped">
   <thead>
   <tr>
     <th>No</th>
@@ -120,3 +126,4 @@
 
   </tbody>
 </table>
+<%= image_tag "/assets/qrcodeguestinfo.png"%>

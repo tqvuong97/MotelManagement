@@ -1,0 +1,59 @@
+
+<h1>Billings</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Electric</th>
+    <th>Water</th>
+    <th>Internet</th>
+    <th>Cleaner</th>
+    <th>Parking</th>
+    <th>Laundry</th>
+    <th>Option1</th>
+    <th>Option2</th>
+    <th>Option3</th>
+    <th>Payment</th>
+    <th>    </th>
+    <th>Total</th>
+    <th>Date create</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% billings.each do |billing| %>
+    <tr>
+      <td><%= billing.services_room.room.name %></td>
+      <td><%= number_with_delimiter(billing.electric) %></td>
+      <td><%= number_with_delimiter(billing.water) %></td>
+      <td><%= number_with_delimiter(billing.internet )%></td>
+      <td><%= number_with_delimiter(billing.cleaner) %></td>
+      <td><%= number_with_delimiter(billing.parking) %></td>
+      <td><%= number_with_delimiter(billing.laundry) %></td>
+      <td><%= number_with_delimiter(billing.option1) %></td>
+      <td><%= number_with_delimiter(billing.option2 )%></td>
+      <td><%= number_with_delimiter(billing.option3 )%></td>
+      <td><%= (billing.payment )%></td>
+
+      <td></td>
+      <td><%= number_with_delimiter(billing.total) %></td>
+      <td><%= billing.created_at %></td>
+      <td><%= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>
+      <td><%= link_to 'Destroy', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%if billing.payment == false %>
+          <%= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],billing.services_room_id,billing) ,method: :patch%>
+        <%end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if billings.blank? %>
+  <%= link_to 'New Billing', new_room_services_room_billing_path , class: "btn btn-primary" %>
+<%end %>
+<%= link_to 'Back', room_services_rooms_path , class: "btn btn-warning"%>

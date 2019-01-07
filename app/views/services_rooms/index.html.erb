@@ -38,14 +38,12 @@
               <%#if services_room.billings.blank? %>
 <!--                <i style='font-size:24px ;color: orange' class="material-icons">&#xe2cc;</i>-->
               <%#end %>
-
               <%if p.payment == true%>
                 <i style='font-size:24px ;color: green' class='fas'>&#xf058;</i>
               <%elsif p.payment == false%>
                 <i style='font-size:24px ;color: red' class="material-icons">&#xe5c9;</i>
-
               <%end %>
-            <%end %>
+        <%end %>
         </td>
         <td><%= services_room.datebegin %></td>
         <td><%= services_room.dateend %></td>
@@ -74,3 +72,7 @@
     <div class="col-md-offset-1"></div>
   </div>
 </div>
+
+
+
+

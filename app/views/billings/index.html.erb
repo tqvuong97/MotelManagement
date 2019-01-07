@@ -1,59 +1,115 @@
 
-<h1>Billings</h1>
+<h2>Billings</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Electric</th>
-      <th>Water</th>
-      <th>Internet</th>
-      <th>Cleaner</th>
-      <th>Parking</th>
-      <th>Laundry</th>
-      <th>Option1</th>
-      <th>Option2</th>
-      <th>Option3</th>
-      <th>Payment</th>
-      <th>    </th>
-      <th>Total</th>
-      <th>Date create</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class = "container">
+  <div class = "row">
+    <div class="col-md-offset-4"></div>
     <% @billings.each do |billing| %>
-      <tr>
-        <td><%= billing.services_room.room.name %></td>
-        <td><%= number_with_delimiter(billing.electric) %></td>
-        <td><%= number_with_delimiter(billing.water) %></td>
-        <td><%= number_with_delimiter(billing.internet )%></td>
-        <td><%= number_with_delimiter(billing.cleaner) %></td>
-        <td><%= number_with_delimiter(billing.parking) %></td>
-        <td><%= number_with_delimiter(billing.laundry) %></td>
-        <td><%= number_with_delimiter(billing.option1) %></td>
-        <td><%= number_with_delimiter(billing.option2 )%></td>
-        <td><%= number_with_delimiter(billing.option3 )%></td>
-        <td><%= (billing.payment )%></td>
-
-        <td></td>
-        <td><%= number_with_delimiter(billing.total) %></td>
-        <td><%= billing.created_at %></td>
-        <td><%= link_to 'Show', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>
-        <td><%= link_to 'Destroy', room_services_room_billing_path(params[:room_id],params[:services_room_id],billing), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <%if billing.payment == false %>
-            <%= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],params[:services_room_id],billing) ,method: :patch%>
+    <div class="card col-md-4">
+      <div class="card-header bg-info" style="color: white;text-align: center;">
+        <div style="font-weight: bold;font-size: 35px;">
+          <%= billing.services_room.room.name.upcase %> &nbsp;
+          <%if billing.payment == true%>
+            <i style='font-size:35px ;color: green' class='fas'>&#xf058;</i>
+          <%elsif billing.payment == false%>
+            <i style='font-size:35px ;color: red' class="material-icons">&#xe5c9;</i>
           <%end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+        <div>
+          <%= billing.services_room.datebegin %> &nbsp; <i style='font-size:24px' class='fas'>&#xf061;</i>   &nbsp; <%= billing.services_room.dateend %>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="col-md-6">
+          <div><i style='font-size:24px' class="material-icons">&#xe63c;</i> Electricity : <%= number_with_delimiter(billing.electric) %></div>
+          <div><i style='font-size:24px' class='fas'>&#xf46a;</i> Water  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.water) %></div>
+          <div><i style='font-size:24px' class='fab'>&#xf26b;</i> Internet &nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.internet )%></div>
+          <div><i style='font-size:24px' class='fas'>&#xf06c;</i> Cleaner &nbsp;&nbsp;: <%= number_with_delimiter(billing.cleaner) %></div>
+          <div><i style='font-size:24px' class='fas'>&#xf21c;</i> Parking : <%= number_with_delimiter(billing.parking) %></div>
+        </div>
+        <div class="col-md-6">
+          <div><i style='font-size:24px' class='fas'>&#xf553;</i> Laundry&nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.laundry) %></div>
+          <div><i class="material-icons">&#xe3d0;</i> Option 1 &nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.option1) %></div>
+          <div><i class="material-icons">&#xe3d1;</i> Option 2 &nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.option2 )%></div>
+          <div><i class="material-icons">&#xe3d2;</i> Option 3 &nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.option3 )%></div>
+          <div><i style='font-size:24px' class='fas'>&#xf056;</i> Bominus &nbsp;&nbsp;&nbsp;: <%= number_with_delimiter(billing.bominus )%></div>
+        </div>
+        <div><br><br></div>
+        <div style="text-align: center;font-weight: bold">
+          Total : <%= number_with_delimiter(billing.total) %> $
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <%= link_to 'Export', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") ,class: "btn btn-success col-md-4"%>
+          <%= link_to 'Destroy', room_services_room_billing_path(params[:room_id],params[:services_room_id],billing), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger col-md-4"%>
+          <%if billing.payment == false %>
+            <%= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],params[:services_room_id],billing) ,method: :patch,class: "btn btn-primary col-md-4"%>
+          <%end %>
+        </div>
+      </div>
+    </div>
+      <%end %>
+  </div>
+</div>
+
+
+
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Electric</th>-->
+<!--      <th>Water</th>-->
+<!--      <th>Internet</th>-->
+<!--      <th>Cleaner</th>-->
+<!--      <th>Parking</th>-->
+<!--      <th>Laundry</th>-->
+<!--      <th>Option1</th>-->
+<!--      <th>Option2</th>-->
+<!--      <th>Option3</th>-->
+<!--      <th>Payment</th>-->
+<!--      <th>    </th>-->
+<!--      <th>Total</th>-->
+<!--      <th>Date create</th>-->
+<!--      <th colspan="2"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @billings.each do |billing| %>
+<!--      <tr>-->
+<!--        <td><%#= billing.services_room.room.name %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.electric) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.water) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.internet )%></td>-->
+<!--        <td><%#= number_with_delimiter(billing.cleaner) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.parking) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.laundry) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.option1) %></td>-->
+<!--        <td><%#= number_with_delimiter(billing.option2 )%></td>-->
+<!--        <td><%#= number_with_delimiter(billing.option3 )%></td>-->
+<!--        <td><%#= (billing.payment )%></td>-->
+
+<!--        <td></td>-->
+<!--        <td><%#= number_with_delimiter(billing.total) %></td>-->
+<!--        <td><%#= billing.created_at %></td>-->
+<!--        <td><%#= link_to 'Export', room_services_room_billing_path(params[:room_id],billing.services_room_id,billing.id,format: "xls") %></td>-->
+<!--        <td><%#= link_to 'Destroy', room_services_room_billing_path(params[:room_id],params[:services_room_id],billing), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--        <td>-->
+          <%#if billing.payment == false %>
+            <%#= link_to 'Pay', room_services_room_billing_payment_path(params[:room_id],params[:services_room_id],billing) ,method: :patch%>
+          <%#end %>
+<!--        </td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
 
 <br>
 <% if @billings.blank? %>
 <%= link_to 'New Billing', new_room_services_room_billing_path , class: "btn btn-primary" %>
 <%end %>
 <%= link_to 'Back', room_services_rooms_path , class: "btn btn-warning"%>
+<%= image_tag "/assets/qrcodeguestinfo.png",style: "height: 100px"%>
