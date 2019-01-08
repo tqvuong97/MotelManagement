@@ -29,7 +29,7 @@ class BillingsController < ApplicationController
     end
     @t = @billing.services_room.room.guests
     @t.each do |t|
-      # SendBillingMailer.sample_email(t,@billing).deliver_now
+      SendBillingMailer.sample_email(t,@billing).deliver_now
     end
   end
 
