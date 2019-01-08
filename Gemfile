@@ -71,3 +71,4 @@ gem 'jquery-rails'
 gem 'nexmo'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "rails_admin"

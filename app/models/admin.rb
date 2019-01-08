@@ -8,6 +8,6 @@ class Admin < ApplicationRecord
   has_many :areas
   has_many :rooms
   has_many :services
-  has_many :users
+
 
 end

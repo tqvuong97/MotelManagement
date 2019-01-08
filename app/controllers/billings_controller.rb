@@ -104,10 +104,8 @@ class BillingsController < ApplicationController
 
     @billing.payment = true
     @billing.save
-    # # @billing.payment = true
-    respond_to do |format|
 
-      # @billing.update_attribute(payment: true)
+    respond_to do |format|
       format.html{ redirect_to room_services_room_billings_path(params[:room_id],params[:services_room_id]), notice: "This billing was successfully paid." }
     end
   end

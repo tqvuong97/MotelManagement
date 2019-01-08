@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
+
+  mount RailsAdmin::Engine => '/king', as: 'rails_admin'
   resources :billings
   resources :services_rooms
   resources :services
@@ -21,14 +22,13 @@ Rails.application.routes.draw do
       resources :billings do
         patch "/payment",to: "billings#updatepayment"
       end
-
     end
   end
   resources :rooms do
     resources :guests
   end
   resources :areas
-  devise_for :admins
+  devise_for :admins #, controllers: {sessions: "sessions"}
   get "/static_pages/:page", to: "static_pages#show"
   root "static_pages#show", page: "home"
 
