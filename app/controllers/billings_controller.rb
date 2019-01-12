@@ -6,6 +6,7 @@ class BillingsController < ApplicationController
   # GET /billings
   # GET /billings.json
   def index
+
     @billings = Billing.where("services_room_id = ?",params[:services_room_id])
   end
 
@@ -95,21 +96,34 @@ class BillingsController < ApplicationController
   end
   def updatepayment
     @billing = Billing.find(params[:billing_id])
-    client = Nexmo::Client.new(
-        api_key: "29784dbb",
-        api_secret: "R7RrOS0lhE5IlACX"
-    )
-    client.sms.send(
-        from: "51503120",
-        to: "84987113442",
-        text: "-RECEIPT- " +@billing.services_room.room.name.to_s+ " From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s + " Paid : " + @billing.total.to_s
-    )
+    # client = Nexmo::Client.new(
+    #     api_key: "29784dbb",
+    #     api_secret: "R7RrOS0lhE5IlACX"
+    # )
+    # client.sms.send(
+    #     from: "51503120",
+    #     to: "84987113442",
+    #     text: "-RECEIPT- " +@billing.services_room.room.name.to_s+ " From : "+ @billing.services_room.datebegin.to_s + " To : " + @billing.services_room.dateend.to_s + " Paid : " + @billing.total.to_s
+    # )
 
     @billing.payment = true
     @billing.save
-
     respond_to do |format|
       format.html{ redirect_to room_services_room_billings_path(params[:room_id],params[:services_room_id]), notice: "This billing was successfully paid." }
+    end
+  end
+
+  def returnroom
+    @billing = Billing.find(params[:billing_id])
+    @room = Room.find(@billing.services_room.room.id)
+    @room.status = "available"
+    @room.save
+    @guests = @billing.services_room.room.guests
+    @guests.each do |g|
+      g.destroy
+    end
+    respond_to do |format|
+      format.html{ redirect_to room_services_room_billings_path(params[:room_id],params[:services_room_id]), notice: "This room was successfully returned." }
     end
   end
 

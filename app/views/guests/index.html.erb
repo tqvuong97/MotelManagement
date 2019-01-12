@@ -4,8 +4,9 @@
     font-size: 20px;
   }
 </style>
-
+<%if @guests.count < Room.find(params[:room_id]).slot%>
 <%= link_to 'New Guest', new_room_guest_path,class: "btn btn-info" %>
+  <%end %>
 <%= link_to 'Back', rooms_path,class: "btn btn-warning" %> <br>
 <%if @guests.blank? %>
   <p>Nobody in this room</p>
@@ -34,7 +35,7 @@
         <div class="card-footer">
           <div class="row">
             <%= link_to 'Edit', edit_room_guest_path(guest.room_id,guest),class: "btn btn-success col-md-6" %>
-            <%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger col-md-6"%>
+            <%= link_to 'Destroy', room_guest_path(guest.room_id,guest), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger col-md-6"%>
           </div>
         </div>
       </div>

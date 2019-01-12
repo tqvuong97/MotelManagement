@@ -32,6 +32,99 @@
 <%= link_to '+ New Room', new_room_path ,class: "btn btn-primary btn-lg"%>
 
 <%= link_to "Chart",chart_path,class: "btn btn-success btn-lg" %>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+    <%#= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "All" ,class: "btn btn-lg"%>
+    <%# end %>
+    <%#= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Available" ,class: "btn btn-success btn-lg"%>
+    <%# end %>
+    <%#= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Hired" ,class: "btn btn-danger btn-lg"%>
+    <%# end %>
+    <%#= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Fixing" ,class: "btn btn-warning btn-lg" %>
+    <%# end %>
+    <%#= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Debt" ,class: "btn btn-secondary btn-lg" %>
+    <%# end %>
+<!--  </div>-->
+<!--</div>-->
+
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Status
+  </button>
+  <div class="dropdown-menu">
+    <%= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "All" ,class: "dropdown-item btn btn-lg", co%>
+      <%#= Room.where("admin_id = ?",current_admin.id).count.to_s%>
+      <button class="dropdown-item btn btn-lg" type="submit" name = "commit" value="All">
+        All -  <%= Room.where("admin_id = ?",current_admin.id).count.to_s%>
+      </button>
+    <% end %>
+    <%= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Available ",class: "dropdown-item btn btn-success btn-lg"%>
+      <button class="dropdown-item btn btn-lg" type="submit" name = "commit" value="Available">
+        Available -  <%= Room.where("admin_id = ? and status = 'available'",current_admin.id).count.to_s%>
+      </button>
+    <% end %>
+    <%= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Hired" ,class: " dropdown-item btn btn-danger btn-lg"%>
+      <button class="dropdown-item btn btn-lg" type="submit" name = "commit" value="Hired">
+        Hired -  <%= Room.where("admin_id = ? and status = 'hired'",current_admin.id).count.to_s%>
+      </button>
+  <% end %>
+    <%= form_tag(rooms_path, method: :get) do %>
+      <%#= submit_tag "Fixing" ,class: "dropdown-item btn btn-warning btn-lg" %>
+      <button class="dropdown-item btn btn-lg" type="submit" name = "commit" value="Fixing">
+        Fixing -  <%= Room.where("admin_id = ? and status = 'fixing'",current_admin.id).count.to_s%>
+      </button>
+  <% end %>
+    <%= form_tag(rooms_path, method: :get) do %>
+      <button class="dropdown-item btn btn-lg" type="submit" name = "commit" value="Debt">
+        Debt -  <%= @room1.to_a.size%>
+      </button>
+
+      <%#= submit_tag "Debt" ,class: "dropdown-item btn btn-secondary btn-lg" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+<%#for i in @room.size %>
+<%if @room %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Debt</th>
+      </tr>
+    </thead>
+    <tboby>
+      <%@room.to_a.each do |r| %>
+      <tr>
+        <td><%=r[1]%></td>
+        <td><%=r[5]%></td>
+        <td><%=r[6]%></td>
+        <td><%=r[4]%></td>
+      </tr>
+      <%end %>
+    </tboby>
+
+  </table>
+<%end %>
+
+
+
+
+<%=  %>
 <!--<%#= link_to 'Home',root_path,class: "btn btn-warning" %> <br>-->
 
 <div class="container" >
@@ -42,15 +135,25 @@
         <div class="card-body">
             <div class="container">
               <%if room.status == "available" %>
-                <div class="text-success"><i style='font-size:24px' class='fas'>&#xf00c;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
-              <%elsif room.status == "hired" %>
-                <div class="text-danger"><i style='font-size:24px' class='fas'>&#xf31e;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
+              <%#if room.guests.count.to_i == 0 %>
+                <div class="text-success"><i style='font-size:24px' class='fas'>&#xf00c;</i>&nbsp;&nbsp; AVAILABLE</div>
+              <%#elsif room.guests.count.to_i > 0 %>
+                <%elsif room.status == 'hired' %>
+                <div class="text-danger"><i style='font-size:24px' class='fas'>&#xf31e;</i>&nbsp;&nbsp;HIRED</div>
               <%else %>
-                <div class="text-warning"><i style='font-size:24px' class='fas'>&#xf6e3;</i>&nbsp;&nbsp; <%= room.status.upcase %></div>
+                <div class="text-warning"><i style='font-size:24px' class='fas'>&#xf6e3;</i>&nbsp;&nbsp; FIXING</div>
               <%end %>
               <div class="text-info"><i style='font-size:24px' class='far'>&#xf3d1;</i>&nbsp;&nbsp; <%= number_with_delimiter(room.price) %></div>
               <div ><i style='font-size:24px' class='fas'>&#xf500;</i>&nbsp;&nbsp;<%= room.guests.count %> / <%= room.slot %></div>
               <div>Deposit : <%= room.deposit %> </div>
+<!--              <div>Payment :-->
+                <%#if room.services_rooms.last.billings && room.services_rooms.last.billings.last.payment == true%>
+<!--                  <i style='font-size:24px ;color: green' class='fas'>&#xf058;</i>-->
+                <%#elsif room.services_rooms.last.billings.last.payment == false%>
+<!--                  <i style='font-size:24px ;color: red' class="material-icons">&#xe5c9;</i>-->
+                <%#end %>
+                <%#= room.services_rooms.last.billings.last.payment %>
+<!--              </div>-->
             </div>
         </div>
         <div class="card-footer">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_062255) do
+ActiveRecord::Schema.define(version: 2019_01_12_153211) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 2019_01_08_062255) do
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
     t.index ["admin_id"], name: "index_areas_on_admin_id"
+  end
+
+  create_table "backup_guests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.date "birth"
+    t.text "address"
+    t.string "identitycard"
+    t.string "phonenumber"
+    t.string "image"
+    t.string "job"
+    t.text "notice"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_backup_guests_on_room_id"
   end
 
   create_table "billings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -147,6 +163,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_062255) do
   end
 
   add_foreign_key "areas", "admins"
+  add_foreign_key "backup_guests", "rooms"
   add_foreign_key "billings", "services_rooms"
   add_foreign_key "devices_rooms", "devices"
   add_foreign_key "devices_rooms", "rooms"

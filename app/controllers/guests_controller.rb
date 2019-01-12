@@ -26,9 +26,11 @@ class GuestsController < ApplicationController
   # POST /guests.json
   def create
     @guest = Guest.new(guest_params)
-
     respond_to do |format|
       if @guest.save
+          @room = Room.find(@guest.room_id)
+          @room.status = "hired"
+          @room.save
         format.html { redirect_to room_guests_path(@guest.room_id,@guest), notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
@@ -55,9 +57,15 @@ class GuestsController < ApplicationController
   # DELETE /guests/1
   # DELETE /guests/1.json
   def destroy
+    @room = Room.find(@guest.room_id)
     @guest.destroy
+    @guests = Guest.where("room_id = ? ",@room.id)
+    if @guests.count == 0
+      @room.status = "available"
+      @room.save
+    end
     respond_to do |format|
-      format.html { redirect_to room_guests_path, notice: 'Guest was successfully destroyed.' }
+      format.html { redirect_to room_guests_path(params[:room_id]), notice: 'Guest was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

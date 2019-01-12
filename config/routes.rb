@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :services_rooms do
       resources :billings do
         patch "/payment",to: "billings#updatepayment"
+        put "/return",to: "billings#returnroom"
       end
     end
   end

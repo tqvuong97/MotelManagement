@@ -7,11 +7,26 @@ class RoomsController < ApplicationController
   # @rooms = Room.searchroom(params[:r])
   # @rooms = Room.where("admin_id = ?",current_admin.id)
     @areas = Area.where(admin_id: current_admin.id).map { |a| [a.name, a.id] }
+    @room1 = ActiveRecord::Base.connection.execute("select r.id ,r.name,r.status,r.admin_id, b.total,s.datebegin,s.dateend from rooms r,services_rooms s,billings b where b.payment = 0 and r.admin_id = "+current_admin.id.to_s+" and r.id = s.room_id and s.id = b.services_room_id").to_a
+
     if params[:r]
       @rooms = Room.where("admin_id = ? and name LIKE ?",current_admin.id,"%#{params[:r]}%").order('created_at DESC')
     else
-      @rooms = Room.where("admin_id = ?",current_admin.id).order('created_at DESC')
+      if params[:commit]
+        if params[:commit] == 'All'
+          @rooms = Room.where("admin_id = ?",current_admin.id).order('created_at DESC')
+        elsif params[:commit] == "Debt"
+          @rooms = Room.where("admin_id = ? ",current_admin.id).order('created_at DESC')
+          @room = ActiveRecord::Base.connection.execute("select r.id ,r.name,r.status,r.admin_id, b.total,s.datebegin,s.dateend from rooms r,services_rooms s,billings b where b.payment = 0 and r.admin_id = "+current_admin.id.to_s+" and r.id = s.room_id and s.id = b.services_room_id").to_a
+
+        else
+          @rooms = Room.where("admin_id = ? and status = ?",current_admin.id,params[:commit].downcase)
+        end
+      else
+        @rooms = Room.where("admin_id = ?",current_admin.id).order('created_at DESC')
+      end
     end
+
 
   end
 
@@ -98,6 +113,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :status, :price, :slot, :area_id,:admin_id,:r,:quantity,:deposit)
+      params.require(:room).permit(:name, :status, :price, :slot, :area_id,:admin_id,:r,:quantity,:deposit,:av)
     end
 end

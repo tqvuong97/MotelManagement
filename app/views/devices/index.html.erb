@@ -1,26 +1,65 @@
-
+<style>
+  td{
+    font-size: 20px;
+  }
+</style>
 <h2>Devices</h2>
 <%= link_to 'New Device', new_device_path,class: "btn btn-primary btn-lg" %>
 <br><br>
-<div class="container">
+<div class="container center-block">
   <div class="row">
-    <% @devices.each do |device| %>
-      <div class="card col-md-3">
-        <div class="card-header bg-info text-white"><%= link_to device.name.upcase , edit_device_path(device),class: "btn btn-info text-white",style: "font-size: 20px;font-weight: bold" %>&nbsp;<i class="material-icons">&#xe337;</i></div>
-        <div class="card-body">
-          <div><b>Branch : </b><%= device.branch %></div>
-          <div><b>Price : </b><%= device.price %></div>
-        </div>
-        <div class="card-footer" >
-
-            <div class="row">
-              <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' },class: "col-md-12 btn btn-danger"%>
-            </div>
-        </div>
-      </div>
-    <% end %>
+    <div class="col-md-offset-3"></div>
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Price</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @devices.each do |device| %>
+          <tr>
+            <td><%= device.name %></td>
+            <td><%= device.branch %></td>
+            <td><%= device.price %></td>
+            <td><%= link_to 'Edit', edit_device_path(device) ,class: "btn btn-success" %></td>
+            <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger"%></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-offset-3"></div>
   </div>
 </div>
+
+
+
+
+
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+    <%# @devices.each do |device| %>
+<!--      <div class="card col-md-3">-->
+<!--        <div class="card-header bg-info text-white"><%#= link_to device.name.upcase , edit_device_path(device),class: "btn btn-info text-white",style: "font-size: 20px;font-weight: bold" %>&nbsp;<i class="material-icons">&#xe337;</i></div>-->
+<!--        <div class="card-body">-->
+<!--          <div><b>Branch : </b><%#= device.branch %></div>-->
+<!--          <div><b>Price : </b><%#= device.price %></div>-->
+<!--        </div>-->
+<!--        <div class="card-footer" >-->
+
+<!--            <div class="row">-->
+              <%#= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' },class: "col-md-12 btn btn-danger"%>
+<!--            </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    <%# end %>
+<!--  </div>-->
+<!--</div>-->
 
 
 <br>
