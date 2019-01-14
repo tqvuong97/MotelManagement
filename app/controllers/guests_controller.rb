@@ -57,6 +57,9 @@ class GuestsController < ApplicationController
   # DELETE /guests/1
   # DELETE /guests/1.json
   def destroy
+    @g_bk = BackupGuest.find_by("name = '"+@guest.name+"' and created_at = '" +@guest.created_at.to_s+ "' and room_id = " +@guest.room.id.to_s)
+    @g_bk.deleted_at = Time.now.to_s
+    @g_bk.save
     @room = Room.find(@guest.room_id)
     @guest.destroy
     @guests = Guest.where("room_id = ? ",@room.id)

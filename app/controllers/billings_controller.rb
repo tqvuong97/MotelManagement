@@ -1,12 +1,10 @@
 require 'nexmo'
 class BillingsController < ApplicationController
-
   before_action :set_billing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
   # GET /billings
   # GET /billings.json
   def index
-
     @billings = Billing.where("services_room_id = ?",params[:services_room_id])
   end
 
@@ -33,7 +31,6 @@ class BillingsController < ApplicationController
       unless t.email.blank?
         SendBillingMailer.sample_email(t,@billing).deliver_now
       end
-
     end
   end
 
@@ -46,7 +43,6 @@ class BillingsController < ApplicationController
     @billing.option2 = 0
     @billing.option3 = 0
     @billing.bominus = 0
-
   end
 
   # GET /billings/1/edit
@@ -120,6 +116,9 @@ class BillingsController < ApplicationController
     @room.save
     @guests = @billing.services_room.room.guests
     @guests.each do |g|
+      @g_bk = BackupGuest.find_by("name = '"+g.name+"' and created_at = '" +g.created_at.to_s+ "' and room_id = " +g.room.id.to_s)
+      @g_bk.deleted_at = Time.now.to_s
+      @g_bk.save
       g.destroy
     end
     respond_to do |format|

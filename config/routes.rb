@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :devices_rooms
 
   end
+  resources :backup_guests,only: :index
   resources :rooms do
     resources :services_rooms do
       resources :billings do

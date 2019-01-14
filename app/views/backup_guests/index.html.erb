@@ -1,0 +1,79 @@
+<style>
+  td{
+    font-size: 20px;
+  }
+  input[type=text] {
+    width: 170px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('/app/assets/images/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+
+  input[type=text]:focus {
+    width: 100%;
+  }
+</style>
+<h2>Guests</h2>
+<br><br>
+
+<div class="container center-block" >
+  <div class="row">
+
+    <div class="col-md-offset-8 "></div>
+    <div class="col-md-3 ">
+      <%= form_tag(backup_guests_path	, method: :get) do %>
+        <%= text_field_tag :r, params[:r] ,placeholder: "Search Guests"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container center-block">
+  <div class="row">
+    <div class="col-md-offset-1"></div>
+    <div class="col-md-10">
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Name</th>
+            <th>Birth</th>
+            <th>Address</th>
+            <th>ID Card</th>
+            <th>Phone</th>
+            <th>Image</th>
+            <th>Job</th>
+            <th>Email</th>
+            <th>Check in</th>
+            <th>Check out</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @backup_guests.each do |bg| %>
+          <tr>
+             <td><%= bg.room.name%></td>
+             <td><%= bg.name %></td>
+             <td><%= bg.birth%></td>
+             <td><%= bg.address%></td>
+             <td><%= bg.identitycard%></td>
+             <td><%= bg.phonenumber%></td>
+             <td><%= bg.image %></td>
+             <td><%= bg.job%></td>
+             <td><%= bg.email%></td>
+             <td><%= bg.created_at%></td>
+             <td><%= bg.deleted_at%></td>
+          </tr>
+          <%end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-offset-1"></div>
+  </div>
+</div>
