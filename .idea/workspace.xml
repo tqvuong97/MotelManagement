@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf245ab-b2e8-4aed-9738-e232fa86efee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/backup_guests_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/backup_guests/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/billings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/billings_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/rooms/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -43,14 +39,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/rooms/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+            <state relative-caret-position="222">
+              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="n#style#0;n#!!top" />
+                <element signature="n#div#1;n#!!top" />
                 <element signature="e#3627#4033#0#ruby" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/_navigation.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="25" column="7" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="25" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+              <folding>
+                <element signature="e#187#1623#0" />
+                <element signature="e#1627#1962#0" />
+                <element signature="e#2042#2176#0" />
+                <element signature="e#2545#2644#0" />
+                <element signature="e#2685#3165#0" />
+                <element signature="e#3220#3601#0" />
               </folding>
             </state>
           </provider>
@@ -65,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/backup_guests/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="211">
@@ -75,15 +107,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/billings_controller.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/guests_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="118" column="97" selection-start-line="118" selection-start-column="97" selection-end-line="118" selection-end-column="97" />
+            <state relative-caret-position="1473">
+              <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="3" />
               <folding>
-                <element signature="e#361#1262#0" />
-                <element signature="e#1288#1535#0" />
-                <element signature="e#1625#3584#0" />
-                <element signature="e#3645#4039#0" />
+                <element signature="e#584#1122#0" />
               </folding>
             </state>
           </provider>
@@ -154,31 +183,31 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/registrations_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20190108062255_drop_users.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admins/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/admin.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
         <option value="$PROJECT_DIR$/config/initializers/rails_admin.rb" />
         <option value="$PROJECT_DIR$/app/views/billings/show.xls.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/guests_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/backup_guest.rb" />
         <option value="$PROJECT_DIR$/app/models/room.rb" />
         <option value="$PROJECT_DIR$/app/views/devices/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/guests/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/billings/index.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/rooms_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/rooms/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/backup_guests_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/billings_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/backup_guests/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/guests_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/rooms_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/rooms/index.html.erb" />
       </list>
     </option>
   </component>
@@ -232,7 +261,14 @@
               <item name="MotelManagement" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="rooms" type="462c0819:PsiDirectoryNode" />
+              <item name="devise" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MotelManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MotelManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MotelManagement" type="b2602c69:ProjectViewProjectNode" />
@@ -432,22 +468,21 @@
       <workItem from="1546657215384" duration="15579000" />
       <workItem from="1546683598533" duration="17916000" />
       <workItem from="1546846575210" duration="49765000" />
-      <workItem from="1547105837081" duration="23967000" />
+      <workItem from="1547105837081" duration="27889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318167000" />
+    <option name="totallyTimeSpent" value="322089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1360" height="770" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5010799" side_tool="true" weight="0.19424461" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49892008" visible="true" weight="0.18569255" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49892008" visible="true" weight="0.18569255" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.31513262" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.31513262" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32937366" />
@@ -551,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/billings/show.xls.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -600,24 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_navigation.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="50" column="54" lean-forward="true" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -681,13 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/guests_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/rails_admin.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-286">
@@ -745,41 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="91" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/services_rooms/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/rooms/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#!!top" />
-            <element signature="e#3627#4033#0#ruby" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/billings_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="118" column="97" selection-start-line="118" selection-start-column="97" selection-end-line="118" selection-end-column="97" />
-          <folding>
-            <element signature="e#361#1262#0" />
-            <element signature="e#1288#1535#0" />
-            <element signature="e#1625#3584#0" />
-            <element signature="e#3645#4039#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,10 +766,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/billings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-88">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#359#1259#0" />
+            <element signature="e#1285#1531#0" />
+            <element signature="e#1621#3580#0" />
+            <element signature="e#3641#4035#0" />
+            <element signature="e#4038#4754#0" />
+            <element signature="e#4758#5404#0" />
+            <element signature="e#5460#5744#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/guests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1473">
+          <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="3" />
+          <folding>
+            <element signature="e#584#1122#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/backup_guests/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+          <folding>
+            <element signature="e#187#1623#0" />
+            <element signature="e#1627#1962#0" />
+            <element signature="e#2042#2176#0" />
+            <element signature="e#2545#2644#0" />
+            <element signature="e#2685#3165#0" />
+            <element signature="e#3220#3601#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_navigation.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rooms/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+            <element signature="n#div#1;n#!!top" />
+            <element signature="e#3627#4033#0#ruby" />
+          </folding>
         </state>
       </provider>
     </entry>

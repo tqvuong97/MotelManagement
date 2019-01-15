@@ -91,6 +91,7 @@
                 <a class="nav-link" href="<%= edit_admin_registration_path %>" style="font-size: 15px">
                   <i class="glyphicon glyphicon-heart"></i>
                   <%=current_admin.email %>
+                  <b><%=( current_admin.expired_at.to_date - Time.now.to_date).to_i %></b>
                   <%= link_to('Log out', destroy_admin_session_path, method: :delete) %>
                 </a>
 

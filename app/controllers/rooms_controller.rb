@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
+  before_action :check_expire
   # GET /rooms
   # GET /rooms.json
   def index
@@ -44,19 +45,8 @@ class RoomsController < ApplicationController
     @room = Room.new
     @areas = Area.where(admin_id: current_admin.id)
     @areas = @areas.map { |a| [a.name, a.id] }
-
   end
-  # def createmanyrooms
-  #   for i in 0..params[:quantity].to_i
-  #     @r = Room.new(room_params)
-  #     @r.name = "Room " + @r+" "+i
-  #     @r.admin_id = current_admin.id.to_i
-  #     @r.save
-  #   end
-  #   respond_to do |format|
-  #     format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
-  #   end
-  # end
+
 
   # GET /rooms/1/edit
   def edit
@@ -113,5 +103,10 @@ class RoomsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
       params.require(:room).permit(:name, :status, :price, :slot, :area_id,:admin_id,:r,:quantity,:deposit,:av)
+    end
+    def check_expire
+      if current_admin.expired_at.to_i < Time.now.to_i
+        redirect_to root_path ,notice: 'Your account was expired ! Please contact Admin to be supported .'
+      end
     end
 end
