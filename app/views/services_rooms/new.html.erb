@@ -1,4 +1,4 @@
-<h2>New Services Room</h2>
+<h2>New Services Room [<%=Room.find(params[:room_id]).name %>]</h2>
 
 <%= render 'form', services_room: @services_room %>
 

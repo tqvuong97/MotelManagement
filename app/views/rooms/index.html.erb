@@ -94,7 +94,7 @@
     <tboby>
       <%@room.to_a.each do |r| %>
       <tr>
-        <td><%=r[1]%></td>
+        <td><%=link_to r[1] , room_services_rooms_path(r[0])%></td>
         <td><%=r[5]%></td>
         <td><%=r[6]%></td>
         <td><%=r[4]%></td>

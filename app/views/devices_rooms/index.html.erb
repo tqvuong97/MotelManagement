@@ -3,7 +3,7 @@
     font-size: 20px;
   }
 </style>
-<h2>Devices Rooms</h2>
+<h2>Devices Rooms [<%=Room.find(params[:room_id]).name %>]</h2>
 <%= link_to 'New Devices Room', new_room_devices_room_path , class: "btn btn-info"%>
 
 <div class="container center-block">

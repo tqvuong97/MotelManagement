@@ -1,4 +1,4 @@
-<h2>New Guest</h2>
+<h2>New Guest [<%=Room.find(params[:room_id]).name %>]</h2>
 
 <%= render 'form', guest: @guest %>
 

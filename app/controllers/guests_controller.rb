@@ -65,6 +65,7 @@ class GuestsController < ApplicationController
     @guests = Guest.where("room_id = ? ",@room.id)
     if @guests.count == 0
       @room.status = "available"
+      @room.deposit = 0
       @room.save
     end
     respond_to do |format|

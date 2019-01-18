@@ -113,6 +113,7 @@ class BillingsController < ApplicationController
     @billing = Billing.find(params[:billing_id])
     @room = Room.find(@billing.services_room.room.id)
     @room.status = "available"
+    @room.deposit = 0
     @room.save
     @guests = @billing.services_room.room.guests
     @guests.each do |g|

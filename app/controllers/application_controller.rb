@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :check_expire ,if: :session_controller?
   # before_action :check_expire ,if: :devise_controller?
   # before_action :authenticate_admin!
@@ -10,15 +10,15 @@ class ApplicationController < ActionController::Base
   #     redirect_to root_path ,notice: 'Your account was expired ! Please contact Admin to be supported .'
   #   end
   # end
-  # protected
+  protected
     # def after_sign_in_path_for resource
     #   root_path
     # end
-    # def configure_permitted_parameters
-    #   devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:expired_at) }
-    #   update_attributes = [:expired_at]
-    #   devise_parameter_sanitizer.permit(:sign_up, keys: [:expired_at,:role])
-    # end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:expired_at) }
+
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:expired_at,:role])
+    end
   # def check_expire
   #   unless current_admin.expired_at.to_i > Time.now.to_i
   #     redirect_to root_path ,notice: 'Your account was expired ! Please contact Admin to be supported .'
