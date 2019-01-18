@@ -117,9 +117,9 @@ class BillingsController < ApplicationController
     @room.save
     @guests = @billing.services_room.room.guests
     @guests.each do |g|
-      @g_bk = BackupGuest.find_by("name = '"+g.name+"' and created_at = '" +g.created_at.to_s+ "' and room_id = " +g.room.id.to_s)
-      @g_bk.deleted_at = Time.now.to_s
-      @g_bk.save
+      # @g_bk = BackupGuest.find_by("name = '"+g.name+"' and created_at = '" +g.created_at.to_s+ "' and room_id = " +g.room.id.to_s)
+      # @g_bk.deleted_at = Time.now.to_s
+      # @g_bk.save
       g.destroy
     end
     respond_to do |format|

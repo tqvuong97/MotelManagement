@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf245ab-b2e8-4aed-9738-e232fa86efee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/guests_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/guests_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/backup_guest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/backup_guest.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/guest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/guest.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -48,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/guests_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="65">
@@ -56,6 +57,24 @@
               <folding>
                 <element signature="e#584#1122#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/guest.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/backup_guest.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -155,7 +174,6 @@
         <option value="$PROJECT_DIR$/app/views/rooms/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/rooms/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/guests/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/guest.rb" />
         <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
         <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
         <option value="$PROJECT_DIR$/app/views/static_pages/home.html.erb" />
@@ -177,7 +195,6 @@
         <option value="$PROJECT_DIR$/config/initializers/rails_admin.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/backup_guest.rb" />
         <option value="$PROJECT_DIR$/app/models/room.rb" />
         <option value="$PROJECT_DIR$/app/views/devices/index.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -203,6 +220,8 @@
         <option value="$PROJECT_DIR$/db/migrate/20190118101239_add_trigger2_to_guests.rb" />
         <option value="$PROJECT_DIR$/app/controllers/backup_guests_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/guests_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/guest.rb" />
+        <option value="$PROJECT_DIR$/app/models/backup_guest.rb" />
       </list>
     </option>
   </component>
@@ -244,6 +263,12 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MotelManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MotelManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MotelManagement" type="b2602c69:ProjectViewProjectNode" />
@@ -460,16 +485,15 @@
       <workItem from="1546657215384" duration="15579000" />
       <workItem from="1546683598533" duration="17916000" />
       <workItem from="1546846575210" duration="49765000" />
-      <workItem from="1547105837081" duration="36745000" />
+      <workItem from="1547105837081" duration="37264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330945000" />
+    <option name="totallyTimeSpent" value="331464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1360" height="650" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5010799" side_tool="true" weight="0.19424461" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49892008" visible="true" weight="0.18569255" />
@@ -601,20 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="53" column="58" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/guest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="3" selection-start-line="2" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/backup_guest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -855,6 +865,20 @@
           <folding>
             <element signature="e#584#1122#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/guest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/backup_guest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
