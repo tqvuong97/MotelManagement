@@ -26,7 +26,7 @@
     <%= link_to "Guest",backup_guests_path,class: "btn btn-success btn-lg" %>
     <%= link_to "Chart",chart_path,class: "btn btn-success btn-lg" %>
   </div>
-    <div class="col-md-offset-7 "></div>
+    <div class="col-md-offset-6 "></div>
     <div class="col-md-3 ">
       <%= form_tag(rooms_path, method: :get) do %>
         <%= text_field_tag :r, params[:r] ,placeholder: "Search room"%>
