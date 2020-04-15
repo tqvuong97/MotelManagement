@@ -155,7 +155,7 @@ GEM
     nexmo (5.5.0)
       jwt (~> 2)
     nio4r (2.3.1)
-    nokogiri (1.9.1)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     public_suffix (3.0.3)
